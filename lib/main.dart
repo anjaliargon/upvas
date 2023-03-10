@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return Sizer(builder: (context, orientation, deviceType) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Homescreen(),
+        home: Homescreen(), 
       );
     });
   }
