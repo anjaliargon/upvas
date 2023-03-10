@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterotp_firebase/Home/controller/Homecontroller.dart';
+import 'package:flutterotp_firebase/app/Home/controller/Homecontroller.dart';
+
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
@@ -104,8 +105,7 @@ class Homescreen extends GetView<HomeController> {
                   ),
                   itemBuilder: (BuildContext context, int index) => InkWell(
                     onTap: () {
-                      homeController.selectedList[index].isSelected;
-                      print(index);
+                      controller.selectedList[index].isSelected.toggle();
                     },
                     child: Container(
                       decoration: BoxDecoration(

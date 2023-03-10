@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterotp_firebase/UpvasList/upvasCantroller.dart';
+import 'package:flutterotp_firebase/app/UpvasList/upvasCantroller.dart';
 
 import 'package:get/get.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterotp_firebase/Home/homescreen.dart';
+import 'package:flutterotp_firebase/app/Home/homescreen.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
