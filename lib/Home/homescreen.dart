@@ -23,25 +23,30 @@ class Homescreen extends GetView<HomeController> {
             actions: [
               Center(
                   child: Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "100",
-                  // homeController.selectedList.value.where((
-                  //     element) {
-                  //   return element.isSelected.isFalse;
-                  // }),
+                  homeController.selectedList
+                      .where((element) {
+                        return element.isSelected.isFalse;
+                      })
+                      .toList()
+                      .length
+                      .toString(),
                   style:
                       TextStyle(fontWeight: FontWeight.bold, fontSize: 12.sp),
                 ),
               )),
-              TextButton(
-                  onPressed: () {
-                    Get.to(upvaslist());
-                  },
-                  child: const Text(
+              InkWell(
+                onTap: () {
+                  Get.to(upvaslist());
+                },
+                child: const Center(
+                  child: Text(
                     "Next Page",
                     style: TextStyle(color: Colors.white),
-                  ))
+                  ),
+                ),
+              )
             ],
           ),
           body: Column(
@@ -113,7 +118,7 @@ class Homescreen extends GetView<HomeController> {
                       margin: const EdgeInsets.all(5),
                       child: Center(
                         child: Text(
-                          index.toString(),
+                          "${(index + 1).toString()}",
                           style: TextStyle(
                             color: (homeController
                                     .selectedList[index].isSelected.isFalse)

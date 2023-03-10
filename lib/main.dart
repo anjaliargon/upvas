@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterotp_firebase/Home/homescreen.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 void main() {
@@ -12,9 +13,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
-      return MaterialApp(
+      return GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Homescreen(), 
+        home: Homescreen(),
       );
     });
   }
