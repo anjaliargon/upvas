@@ -105,7 +105,13 @@ class Homescreen extends GetView<HomeController> {
                   ),
                   itemBuilder: (BuildContext context, int index) => InkWell(
                     onTap: () {
+<<<<<<< Updated upstream:lib/app/Screen/Home/homescreen.dart
                       controller.selectedList[index].isSelected.toggle();
+=======
+                     homeController.selectedList.listen((value) {
+                       homeController.selectedList[index] = value as Selected;
+                     });
+>>>>>>> Stashed changes:lib/Home/homescreen.dart
                     },
                     child: Container(
                       decoration: BoxDecoration(
