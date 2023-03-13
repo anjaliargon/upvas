@@ -58,7 +58,7 @@ class Dashboard extends GetView<DashboardController> {
         body: TabBarView(
           controller: dashboardController.tabController!.value,
           physics: const NeverScrollableScrollPhysics(),
-          children: [Homescreen(),UpvasList()]
+          children: [Homescreen(),UpavaslistView()]
         ),
       );
     });

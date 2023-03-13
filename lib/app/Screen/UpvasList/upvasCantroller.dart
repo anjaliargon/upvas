@@ -1,22 +1,78 @@
-import 'package:get/get.dart';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutterotp_firebase/app/Screen/Home/controller/Homecontroller.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-class Upvascantroller extends GetxController {
+import '../../../../main.dart';
+import '../../Constant/sizeConstant.dart';
+
+class UpavaslistController extends GetxController {
   RxString selectedDate = "".obs;
-  RxList<Selectedupvaslist> selectedList =
-      List.generate(100, (index) => Selectedupvaslist(isSelected: false.obs)).obs;
-  RxList<String> dropdownList = <String>[
+  RxList<String> list = <String>[
     'Savar',
     'Sanj',
   ].obs;
+  RxString dropdownValue = "Savar".obs;
+  RxList<Selected> getDataList = RxList<Selected>([]);
+  RxList tempList = RxList([]);
   RxBool hasData = false.obs;
-  RxString dropdown = "Savar".obs;
   @override
   void onInit() {
+    selectedDate.value =
+        DateFormat('dd/MM/yyyy').format(DateTime.now()).toString();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      data();
+    });
     super.onInit();
+  }
+
+  data() async {
+    hasData.value = false;
+    if (!isNullEmptyOrFalse(
+        box.read(selectedDate.value + dropdownValue.value))) {
+      getDataList.value =
+          ((jsonDecode(box.read(selectedDate.value + dropdownValue.value))
+          as List<dynamic>)
+              .toList())
+              .map((e) => Selected.fromJson(e))
+              .toList();
+    }
+    hasData.value = true;
+    tempList.clear();
+    if (!isNullEmptyOrFalse(getDataList)) {
+      for (int i = 0; i < getDataList.length; i++) {
+        if (getDataList[i].isSelected.isTrue) {
+          tempList.add(i);
+        }
+      }
+    }
+  }
+
+  datePick({required BuildContext context}) async {
+    DateTime? pickedDate = await showDatePicker(
+        builder: (context, child) {
+          return Theme(
+            data: Theme.of(context).copyWith(
+              textButtonTheme: TextButtonThemeData(
+                style: TextButton.styleFrom(
+                 // foregroundColor: appTheme.textGrayColor, // button text color
+                ),
+              ),
+            ),
+            child: child!,
+          );
+        },
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(1950),
+        lastDate: DateTime(2100));
+    if (pickedDate != null) {
+      print(pickedDate);
+      selectedDate.value = DateFormat('dd/MM/yyyy').format(pickedDate);
+      data();
+    } else {}
   }
 
   @override
@@ -28,34 +84,4 @@ class Upvascantroller extends GetxController {
   void onClose() {
     super.onClose();
   }
-  chooseDate({required BuildContext context}) async {
-    DateTime? pickedDate = await showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(1950),
-        lastDate: DateTime(2100));
-    if (pickedDate != null) {
-      print(pickedDate);
-      selectedDate.value = DateFormat('dd/MM/yyyy').format(pickedDate);
-    } else {}
-  }
-}
-
-class Selectedupvaslist {
-  RxBool isSelected = false.obs;
-
-  Selectedupvaslist({
-    required this.isSelected,
-  });
-
-  Selectedupvaslist.fromJson(Map<String, dynamic> json) {
-    isSelected.value = json['isselect'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['isselect'] = isSelected.value;
-    return data;
-  }
-
 }

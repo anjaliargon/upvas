@@ -16,7 +16,10 @@ class Homescreen extends GetView<HomeController> {
       init: homeController,
       builder: (controller) => Obx(
         () => Scaffold(
-          body: Column(
+          body: (homeController.hasData.isFalse) ? Center(
+            child: CircularProgressIndicator(),
+          ):
+          Column(
             children: [
               SizedBox(
                 height: 2.h,
@@ -38,7 +41,7 @@ class Homescreen extends GetView<HomeController> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Obx(
-                            () => Text(homeController.selectedDate.value,
+                                () => Text(homeController.selectedDate.value,
                               style: TextStyle(fontSize: 12.sp,color: colors.offgrey),
                             ),
                           ),
@@ -69,7 +72,7 @@ class Homescreen extends GetView<HomeController> {
                             width: 5.w,
                             child: const Image(
                               image:
-                                  AssetImage('assets/icons_image/dropdown.png'),
+                              AssetImage('assets/icons_image/dropdown.png'),
                               height: 1,
                               width: 1,
                             ),
@@ -122,8 +125,8 @@ class Homescreen extends GetView<HomeController> {
                           child: Text(
                             homeController.selectedList
                                 .where((element) {
-                                  return element.isSelected.isFalse;
-                                })
+                              return element.isSelected.isFalse;
+                            })
                                 .toList()
                                 .length
                                 .toString(),
@@ -140,7 +143,7 @@ class Homescreen extends GetView<HomeController> {
                   child: GridView.builder(
                     itemCount: homeController.selectedList.length,
                     gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
+                    const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 5,
                       crossAxisSpacing: 5.0,
                       mainAxisSpacing: 5.0,
@@ -150,13 +153,13 @@ class Homescreen extends GetView<HomeController> {
                         controller.selectedList[index].isSelected.toggle();
                         homeController.selectedList.listen((value) {
                           homeController.selectedList[index] =
-                              value as Selected;
+                          value as Selected;
                         });
                       },
                       child: Container(
                         decoration: BoxDecoration(
                           color: (homeController
-                                  .selectedList[index].isSelected.isFalse)
+                              .selectedList[index].isSelected.isFalse)
                               ? colors.green
                               : colors.lightgrey,
                           shape: BoxShape.circle,
@@ -167,7 +170,7 @@ class Homescreen extends GetView<HomeController> {
                             (index + 1).toString(),
                             style: TextStyle(
                               color: (homeController
-                                      .selectedList[index].isSelected.isFalse)
+                                  .selectedList[index].isSelected.isFalse)
                                   ? Colors.white
                                   : colors.darkgrey,
                               //  color: item[index] ? Colors.white : Colors.black,
