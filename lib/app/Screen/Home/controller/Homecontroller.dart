@@ -1,13 +1,17 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class HomeController extends GetxController {
+  RxString selectedDate = "".obs;
   RxList<Selected> selectedList =
       List.generate(100, (index) => Selected(isSelected: false.obs)).obs;
-  RxList<String> list = <String>[
-    'Morning',
-    'Evening',
+  RxList<String> dropdownList = <String>[
+    'Savar',
+    'Sanj',
   ].obs;
-  RxString dropdown = "Morning".obs;
+  RxBool hasData = false.obs;
+  RxString dropdown = "Savar".obs;
   @override
   void onInit() {
     super.onInit();
@@ -21,6 +25,17 @@ class HomeController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+  chooseDate({required BuildContext context}) async {
+    DateTime? pickedDate = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(1950),
+        lastDate: DateTime(2100));
+    if (pickedDate != null) {
+      print(pickedDate);
+      selectedDate.value = DateFormat('dd/MM/yyyy').format(pickedDate);
+    } else {}
   }
 }
 
@@ -40,4 +55,5 @@ class Selected {
     data['isselect'] = isSelected.value;
     return data;
   }
+
 }

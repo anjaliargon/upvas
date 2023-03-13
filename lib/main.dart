@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutterotp_firebase/app/Screen/Home/homescreen.dart';
+import 'package:flutterotp_firebase/app/Screen/Dashboard/DashboardScreen.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 
@@ -14,8 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
       return GetMaterialApp(
+        theme: ThemeData(fontFamily: 'JosefinSans'),
         debugShowCheckedModeBanner: false,
-        home: Homescreen(),
+        home: Dashboard(),
       );
     });
   }

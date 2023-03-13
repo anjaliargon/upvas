@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "723319194672",
+    "project_id": "upvas-b9d99",
+    "storage_bucket": "upvas-b9d99.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723319194672:android:372ab6682a4e6f949419f5",
+        "android_client_info": {
+          "package_name": "com.example.flutterotp_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "723319194672-nqt3o30btdt9ktfia3rda24utfmoi6q2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA19CPR9DZusWI4QvGbFXiYfzjDo2pFsjQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "723319194672-nqt3o30btdt9ktfia3rda24utfmoi6q2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
