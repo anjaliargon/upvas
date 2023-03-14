@@ -2,13 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutterotp_firebase/app/Constant/color_constant.dart';
+import 'package:flutterotp_firebase/app/Screen/AddUpvas/AppUpvasController.dart';
 import 'package:flutterotp_firebase/app/Screen/Home/controller/Homecontroller.dart';
 import 'package:flutterotp_firebase/app/routes/app_pages.dart';
 
 import 'package:get/get.dart';
 
 import '../../../../main.dart';
-import '../Add_Upvas/controllers/add_upvas_controller.dart';
 
 class AddUpvasView extends GetWidget<AddUpvasController> {
   const AddUpvasView({Key? key}) : super(key: key);
@@ -59,7 +59,8 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text("Number", style: TextStyle(fontSize: 17)),
+                              const Text("Number",
+                                  style: TextStyle(fontSize: 17)),
                               const SizedBox(
                                 height: 12,
                               ),
@@ -69,8 +70,8 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                 decoration: BoxDecoration(
                                     border: Border.all(
                                         color: appTheme.textGrayColor),
-                                    borderRadius:
-                                        const BorderRadius.all(Radius.circular(12))),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(12))),
                                 child: Padding(
                                   padding: const EdgeInsets.only(
                                       right: 10.0, left: 10),
@@ -83,13 +84,13 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                         color: appTheme.textGrayColor,
                                         fontSize: 17,
                                         fontWeight: FontWeight.w500),
-                                    borderRadius:
-                                        const BorderRadius.all(Radius.circular(12)),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(12)),
                                     icon: Padding(
-                                      padding:
-                                          const EdgeInsets.only(left: 55.0, right: 0),
+                                      padding: const EdgeInsets.only(
+                                          left: 46.0, right: 0),
                                       child: Image.asset(
-                                          "assets/icons_image/down.png",
+                                          "assets/icons_image/dropdown.png",
                                           height: 25),
                                     ),
                                     underline: Container(
@@ -103,7 +104,7 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                         .map<DropdownMenuItem<String>>((value) {
                                       return DropdownMenuItem<String>(
                                         value: value.toString(),
-                                        child: Text((value + 1).toString()),
+                                        child: Text((value).toString()),
                                       );
                                     }).toList(),
                                   ),
@@ -115,7 +116,8 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text("Date", style: TextStyle(fontSize: 17)),
+                              const Text("Date",
+                                  style: TextStyle(fontSize: 17)),
                               const SizedBox(
                                 height: 12,
                               ),
@@ -125,8 +127,8 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                 decoration: BoxDecoration(
                                     border: Border.all(
                                         color: appTheme.textGrayColor),
-                                    borderRadius:
-                                        const BorderRadius.all(Radius.circular(12))),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(12))),
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: InkWell(
@@ -183,7 +185,7 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                             "assets/icons_image/CheckBox.png",
                                             height: 20)
                                         : Image.asset(
-                                            "assets/icons_image/box.png",
+                                            "assets/icons_image/Box.png",
                                             height: 20),
                                     const SizedBox(
                                       width: 10,
@@ -209,7 +211,7 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                             "assets/icons_image/CheckBox.png",
                                             height: 20)
                                         : Image.asset(
-                                            "assets/icons_image/box.png",
+                                            "assets/icons_image/Box.png",
                                             height: 20),
                                     const SizedBox(
                                       width: 10,
@@ -235,7 +237,7 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                             "assets/icons_image/CheckBox.png",
                                             height: 20)
                                         : Image.asset(
-                                            "assets/icons_image/box.png",
+                                            "assets/icons_image/Box.png",
                                             height: 20),
                                     const SizedBox(
                                       width: 10,
@@ -254,7 +256,8 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                       onTap: () async {
                         if (controller.getSelectedText() == "Savar") {
                           List<Selected> list = await ((jsonDecode(box.read(
-                                      "${controller.selectedDataDate.value}Savar")) as List<dynamic>)
+                                          "${controller.selectedDataDate.value}Savar"))
+                                      as List<dynamic>)
                                   .toList())
                               .map((e) => Selected.fromJson(e))
                               .toList();
@@ -262,10 +265,11 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                               .isSelected
                               .value = true;
                           box.write("${controller.selectedDataDate.value}Savar",
-                              jsonEncode(list.map((e) => e.toJson())));
+                              jsonEncode(list.map((e) => e.toJson()).toList()));
                         } else if (controller.getSelectedText() == "Sanj") {
                           List<Selected> list = await ((jsonDecode(box.read(
-                                      "${controller.selectedDataDate.value}Sanj")) as List<dynamic>)
+                                          "${controller.selectedDataDate.value}Sanj"))
+                                      as List<dynamic>)
                                   .toList())
                               .map((e) => Selected.fromJson(e))
                               .toList();
@@ -273,15 +277,18 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                               .isSelected
                               .value = true;
                           box.write("${controller.selectedDataDate.value}Sanj",
-                              jsonEncode(list.map((e) => e.toJson())));
+                              jsonEncode(list.map((e) => e.toJson()).toList()));
                         } else {
                           List<Selected> list = await ((jsonDecode(box.read(
-                                      "${controller.selectedDataDate.value}Sanj")) as List<dynamic>)
+                                          "${controller.selectedDataDate.value}Sanj"))
+                                      as List<dynamic>)
                                   .toList())
                               .map((e) => Selected.fromJson(e))
                               .toList();
-                          List<Selected> listSavar = await ((jsonDecode(box
-                                      .read("${controller.selectedDataDate.value}Savar")) as List<dynamic>)
+                          List<
+                              Selected> listSavar = await ((jsonDecode(box.read(
+                                          "${controller.selectedDataDate.value}Savar"))
+                                      as List<dynamic>)
                                   .toList())
                               .map((e) => Selected.fromJson(e))
                               .toList();
@@ -318,7 +325,7 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                   ]),
                   Positioned(
                       child: Image.asset(
-                    "assets/icons_image/background.png",
+                    "assets/icons_image/temple.png",
                     color: Colors.black,
                   )),
                 ],

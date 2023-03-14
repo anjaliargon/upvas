@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutterotp_firebase/app/Constant/Colors.dart';
 import 'package:flutterotp_firebase/app/Screen/Home/controller/Homecontroller.dart';
@@ -5,6 +7,8 @@ import 'package:flutterotp_firebase/app/Screen/Home/controller/Homecontroller.da
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
+
+import '../../../main.dart';
 
 class Homescreen extends GetView<HomeController> {
   Homescreen({Key? key}) : super(key: key);
@@ -73,6 +77,10 @@ class Homescreen extends GetView<HomeController> {
                               child: DropdownButton(
                                 isExpanded: true,
                                 elevation: 0,
+                                underline: Container(
+                                  // height: 2,
+                                  color: Colors.white,
+                                ),
                                 icon: SizedBox(
                                   height: 5.h,
                                   width: 5.w,
@@ -83,11 +91,9 @@ class Homescreen extends GetView<HomeController> {
                                     width: 1,
                                   ),
                                 ),
-                                hint: const Text(
-                                  'select',
-                                ),
                                 onChanged: (value) {
                                   homeController.dropdown(value);
+                                  homeController.data();
                                 },
                                 value: homeController.dropdown.value,
                                 items:
@@ -150,53 +156,327 @@ class Homescreen extends GetView<HomeController> {
                           )),
                     ),
                     Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: GridView.builder(
-                          itemCount: homeController.selectedList.length,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 5,
-                            crossAxisSpacing: 5.0,
-                            mainAxisSpacing: 5.0,
-                          ),
-                          itemBuilder: (BuildContext context, int index) =>
-                              InkWell(
-                            onTap: () {
-                              controller.selectedList[index].isSelected
-                                  .toggle();
-                              homeController.selectedList.listen((value) {
-                                homeController.selectedList[index] =
-                                    value as Selected;
-                              });
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: (homeController
-                                        .selectedList[index].isSelected.isFalse)
-                                    ? colors.green
-                                    : colors.lightgrey,
-                                shape: BoxShape.circle,
+                      child: SingleChildScrollView(
+                          child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: GridView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: 64,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 5,
+                                crossAxisSpacing: 5.0,
+                                mainAxisSpacing: 5.0,
                               ),
-                              margin: const EdgeInsets.all(5),
-                              child: Center(
-                                child: Text(
-                                  (index + 1).toString(),
-                                  style: TextStyle(
+                              itemBuilder: (BuildContext context, int index) =>
+                                  InkWell(
+                                onTap: () {
+                                  homeController.selectedList[index].isSelected
+                                      .toggle();
+                                  // homeController.selectedList.listen((value) {
+                                  //   homeController.selectedList[index] =
+                                  //       value as Selected;
+                                  // });
+                                  box.write(
+                                      homeController.selectedDate.value +
+                                          homeController.dropdown.value,
+                                      jsonEncode(homeController.selectedList
+                                          .map((e) => e.toJson())
+                                          .toList()));
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
                                     color: (homeController.selectedList[index]
                                             .isSelected.isFalse)
-                                        ? Colors.white
-                                        : colors.darkgrey,
-                                    //  color: item[index] ? Colors.white : Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15.sp,
+                                        ? colors.green
+                                        : colors.lightgrey,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  margin: const EdgeInsets.all(5),
+                                  child: Center(
+                                    child: Text(
+                                      homeController
+                                          .selectedList[index].name.value,
+                                      style: TextStyle(
+                                        color: (homeController
+                                                .selectedList[index]
+                                                .isSelected
+                                                .isFalse)
+                                            ? Colors.white
+                                            : colors.darkgrey,
+                                        //  color: item[index] ? Colors.white : Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15.sp,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ),
+                          Divider(
+                            height: 1.h,
+                            thickness: 1,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: GridView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: 10,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 5,
+                                crossAxisSpacing: 5.0,
+                                mainAxisSpacing: 5.0,
+                              ),
+                              itemBuilder: (BuildContext context, int index) =>
+                                  InkWell(
+                                onTap: () {
+                                  homeController
+                                      .selectedList[index + 64].isSelected
+                                      .toggle();
+                                  // homeController.selectedList.listen((value) {
+                                  //   homeController.selectedList[index] =
+                                  //       value as Selected;
+                                  // });
+                                  box.write(
+                                      homeController.selectedDate.value +
+                                          homeController.dropdown.value,
+                                      jsonEncode(homeController.selectedList
+                                          .map((e) => e.toJson())
+                                          .toList()));
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: (homeController
+                                            .selectedList[index + 64]
+                                            .isSelected
+                                            .isFalse)
+                                        ? colors.green
+                                        : colors.lightgrey,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  margin: const EdgeInsets.all(5),
+                                  child: Center(
+                                    child: Text(
+                                      homeController
+                                          .selectedList[index + 64].name.value,
+                                      style: TextStyle(
+                                        color: (homeController
+                                                .selectedList[index + 64]
+                                                .isSelected
+                                                .isFalse)
+                                            ? Colors.white
+                                            : colors.darkgrey,
+                                        //  color: item[index] ? Colors.white : Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15.sp,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Divider(
+                            height: 1.h,
+                            thickness: 1,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: GridView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: 17,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 5,
+                                crossAxisSpacing: 5.0,
+                                mainAxisSpacing: 5.0,
+                              ),
+                              itemBuilder: (BuildContext context, int index) =>
+                                  InkWell(
+                                onTap: () {
+                                  homeController
+                                      .selectedList[index + 74].isSelected
+                                      .toggle();
+                                  // homeController.selectedList.listen((value) {
+                                  //   homeController.selectedList[index] =
+                                  //       value as Selected;
+                                  // });
+                                  box.write(
+                                      homeController.selectedDate.value +
+                                          homeController.dropdown.value,
+                                      jsonEncode(homeController.selectedList
+                                          .map((e) => e.toJson())
+                                          .toList()));
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: (homeController
+                                            .selectedList[index + 74]
+                                            .isSelected
+                                            .isFalse)
+                                        ? colors.green
+                                        : colors.lightgrey,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  margin: const EdgeInsets.all(5),
+                                  child: Center(
+                                    child: Text(
+                                      homeController
+                                          .selectedList[index + 74].name.value,
+                                      style: TextStyle(
+                                        color: (homeController
+                                                .selectedList[index + 74]
+                                                .isSelected
+                                                .isFalse)
+                                            ? Colors.white
+                                            : colors.darkgrey,
+                                        //  color: item[index] ? Colors.white : Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15.sp,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Divider(
+                            height: 1.h,
+                            thickness: 1,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: GridView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: 5,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 5,
+                                crossAxisSpacing: 5.0,
+                                mainAxisSpacing: 5.0,
+                              ),
+                              itemBuilder: (BuildContext context, int index) =>
+                                  InkWell(
+                                onTap: () {
+                                  homeController
+                                      .selectedList[index + 91].isSelected
+                                      .toggle();
+                                  // homeController.selectedList.listen((value) {
+                                  //   homeController.selectedList[index] =
+                                  //       value as Selected;
+                                  // });
+                                  box.write(
+                                      homeController.selectedDate.value +
+                                          homeController.dropdown.value,
+                                      jsonEncode(homeController.selectedList
+                                          .map((e) => e.toJson())
+                                          .toList()));
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: (homeController.selectedList[index+91]
+                                            .isSelected.isFalse)
+                                        ? colors.green
+                                        : colors.lightgrey,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  margin: const EdgeInsets.all(5),
+                                  child: Center(
+                                    child: Text(
+                                      homeController
+                                          .selectedList[index + 91].name.value,
+                                      style: TextStyle(
+                                        color: (homeController
+                                                .selectedList[index + 91]
+                                                .isSelected
+                                                .isFalse)
+                                            ? Colors.white
+                                            : colors.darkgrey,
+                                        //  color: item[index] ? Colors.white : Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15.sp,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Divider(
+                            height: 1.h,
+                            thickness: 1,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: GridView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: 8,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 5,
+                                crossAxisSpacing: 5.0,
+                                mainAxisSpacing: 5.0,
+                              ),
+                              itemBuilder: (BuildContext context, int index) =>
+                                  InkWell(
+                                onTap: () {
+                                  homeController
+                                      .selectedList[index + 96].isSelected
+                                      .toggle();
+                                  // homeController.selectedList.listen((value) {
+                                  //   homeController.selectedList[index] =
+                                  //       value as Selected;
+                                  // });
+                                  box.write(
+                                      homeController.selectedDate.value +
+                                          homeController.dropdown.value,
+                                      jsonEncode(homeController.selectedList
+                                          .map((e) => e.toJson())
+                                          .toList()));
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: (homeController
+                                            .selectedList[index + 96]
+                                            .isSelected
+                                            .isFalse)
+                                        ? colors.green
+                                        : colors.lightgrey,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  margin: const EdgeInsets.all(5),
+                                  child: Center(
+                                    child: Text(
+                                      homeController
+                                          .selectedList[index + 96].name.value,
+                                      style: TextStyle(
+                                        color: (homeController
+                                                .selectedList[index + 96]
+                                                .isSelected
+                                                .isFalse)
+                                            ? Colors.white
+                                            : colors.darkgrey,
+                                        //  color: item[index] ? Colors.white : Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15.sp,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      )),
                     )
                   ],
                 ),

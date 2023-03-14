@@ -4,15 +4,15 @@ part of 'app_pages.dart';
 abstract class Routes {
   Routes._();
   static const HOME = _Paths.HOME;
-  static const MAINHOME = _Paths.MAINHOME;
-  static const UPAVASLIST = _Paths.UPAVASLIST;
-  static const ADD_UPVAS = _Paths.ADD_UPVAS;
+  static const MAINHOME = _Paths.Dashboard;
+  static const UPAVASLIST = _Paths.Upvaslist;
+  static const Add_upvas = _Paths.Add_upvas;
 }
 
 abstract class _Paths {
   _Paths._();
   static const HOME = '/home';
-  static const MAINHOME = '/mainhome';
-  static const UPAVASLIST = '/upavaslist';
-  static const ADD_UPVAS = '/add-upvas';
+  static const Dashboard = '/dashboard';
+  static const Upvaslist = '/upavaslist';
+  static const Add_upvas = '/addupvas';
 }

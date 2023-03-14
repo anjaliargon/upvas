@@ -1,11 +1,12 @@
-import 'package:flutterotp_firebase/app/Screen/Add_Upvas/bindings/add_upvas_binding.dart';
+import 'package:flutterotp_firebase/app/Screen/AddUpvas/AddUpvasBinding.dart';
 import 'package:flutterotp_firebase/app/Screen/Dashboard/DashboardScreen.dart';
 import 'package:flutterotp_firebase/app/Screen/Dashboard/Dashboardbinding.dart';
 import 'package:flutterotp_firebase/app/Screen/Home/homescreen.dart';
 import 'package:flutterotp_firebase/app/Screen/UpvasList/upvasBinding.dart';
 import 'package:get/get.dart';
 
-import '../Screen/Add_Upvas/views/add_upvas_view.dart';
+import '../Screen/AddUpvas/AddUpvasScreen.dart';
+
 import '../Screen/Home/controller/Homecontrollerbinding.dart';
 import '../Screen/UpvasList/upvaslist.dart';
 
@@ -23,17 +24,17 @@ class AppPages {
       binding: HomeBinding(),
     ),
     GetPage(
-      name: _Paths.MAINHOME,
+      name: _Paths.Dashboard,
       page: () =>  Dashboard(),
       binding: DashboardBinding(),
     ),
     GetPage(
-      name: _Paths.UPAVASLIST,
+      name: _Paths.Upvaslist,
       page: () => const UpavaslistView(),
       binding: UpavaslistBinding(),
     ),
     GetPage(
-      name: _Paths.ADD_UPVAS,
+      name: _Paths.Add_upvas,
       page: () => const AddUpvasView(),
       binding: AddUpvasBinding(),
     ),

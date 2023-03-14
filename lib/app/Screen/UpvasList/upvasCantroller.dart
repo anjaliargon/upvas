@@ -10,13 +10,13 @@ import '../../Constant/sizeConstant.dart';
 
 class UpavaslistController extends GetxController {
   RxString selectedDate = "".obs;
-  RxList<String> list = <String>[
+  RxList<String> dropdown = <String>[
     'Savar',
     'Sanj',
   ].obs;
   RxString dropdownValue = "Savar".obs;
   RxList<Selected> getDataList = RxList<Selected>([]);
-  RxList tempList = RxList([]);
+  RxList dataList = RxList([]);
   RxBool hasData = false.obs;
   @override
   void onInit() {
@@ -40,11 +40,11 @@ class UpavaslistController extends GetxController {
               .toList();
     }
     hasData.value = true;
-    tempList.clear();
+    dataList.clear();
     if (!isNullEmptyOrFalse(getDataList)) {
       for (int i = 0; i < getDataList.length; i++) {
         if (getDataList[i].isSelected.isTrue) {
-          tempList.add(i);
+          dataList.add(getDataList[i].name);
         }
       }
     }
