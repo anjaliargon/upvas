@@ -21,6 +21,7 @@ class Homescreen extends GetView<HomeController> {
       init: homeController,
       builder: (controller) => Obx(
         () => Scaffold(
+          backgroundColor: colors.white,
           body: (homeController.hasData.isFalse)
               ? const Center(
                   child: CircularProgressIndicator(),
@@ -30,90 +31,95 @@ class Homescreen extends GetView<HomeController> {
                     SizedBox(
                       height: 2.h,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                           Container(
-                             height: 50,
-                             width: 170,
-                             decoration: BoxDecoration(
-                                 border:
-                                     Border.all(width: 1, color: colors.grey),
-                                 borderRadius: BorderRadius.circular(10)),
-                             child: InkWell(onTap: (){
-                               homeController.datePick(
-                                   context: Get.context!);
-                             },
-                               child: Row(
-                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                 children: [
-                                    Text(
-                                       homeController.selectedDate.value,
-                                       style: TextStyle(
-                                           fontSize: 12.sp, color: colors.offgrey),
-                                     ),
-
-                                   // Text("03-13-2023",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500,color: colors.offgrey),),,
-                                   const Image(
-                                     image:
-                                         AssetImage('assets/icons_image/date.png'),
-                                     height: 23,
-                                     width: 23,
-                                   )
-                                 ],
-                               ),
-                             ),
-                           ),
-
-                        Container(
-                          height: 50,
-                          width: 170,
-                          decoration: BoxDecoration(
-                              border: Border.all(width: 1, color: colors.grey),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Center(
-                              child: DropdownButton(
-                                isExpanded: true,
-                                elevation: 0,
-                                underline: Container(
-                                  // height: 2,
-                                  color: Colors.white,
-                                ),
-                                icon: SizedBox(
-                                  height: 5.h,
-                                  width: 5.w,
-                                  child: const Image(
-                                    image: AssetImage(
-                                        'assets/icons_image/dropdown.png'),
-                                    height: 1,
-                                    width: 1,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15,right: 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            height: 6.h,
+                            width: 40.w,
+                            decoration: BoxDecoration(
+                                color: colors.white,
+                                border: Border.all(width: 1, color: colors.grey),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: InkWell(
+                              onTap: () {
+                                homeController.datePick(context: Get.context!);
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(
+                                    homeController.selectedDate.value,
+                                    style: TextStyle(
+                                        fontSize: 12.sp,
+                                        color: colors.black,
+                                        fontWeight: FontWeight.bold),
                                   ),
-                                ),
-                                onChanged: (value) {
-                                  homeController.dropdown(value);
-                                  homeController.data();
-                                },
-                                value: homeController.dropdown.value,
-                                items:
-                                    homeController.dropdownList.map((selected) {
-                                  return DropdownMenuItem(
-                                    value: selected,
-                                    child: Text(
-                                      selected,
-                                      style: TextStyle(
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.bold,
-                                          color: colors.offgrey),
-                                    ),
-                                  );
-                                }).toList(),
+
+                                  // Text("03-13-2023",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500,color: colors.offgrey),),,
+                                  const Image(
+                                    image:
+                                        AssetImage('assets/icons_image/date.png'),
+                                    height: 23,
+                                    width: 23,
+                                  )
+                                ],
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                          Container(
+                            height: 6.h,
+                            width: 40.w,
+                            decoration: BoxDecoration(
+                                color: colors.white,
+                                border: Border.all(width: 1, color: colors.grey),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Center(
+                                child: DropdownButton(
+                                  isExpanded: true,
+                                  elevation: 0,
+                                  underline: Container(
+                                    // height: 2,
+                                    color: Colors.white,
+                                  ),
+                                  icon: SizedBox(
+                                    height: 5.h,
+                                    width: 5.w,
+                                    child: const Image(
+                                      image: AssetImage(
+                                          'assets/icons_image/dropdown.png'),
+                                      height: 1,
+                                      width: 1,
+                                    ),
+                                  ),
+                                  onChanged: (value) {
+                                    homeController.dropdown(value);
+                                    homeController.data();
+                                  },
+                                  value: homeController.dropdown.value,
+                                  items:
+                                      homeController.dropdownList.map((selected) {
+                                    return DropdownMenuItem(
+                                      value: selected,
+                                      child: Text(
+                                        selected,
+                                        style: TextStyle(
+                                            fontSize: 12.sp,
+                                            fontWeight: FontWeight.bold,
+                                            color: colors.black),
+                                      ),
+                                    );
+                                  }).toList(),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 3.h,
@@ -209,7 +215,7 @@ class Homescreen extends GetView<HomeController> {
                                             : colors.darkgrey,
                                         //  color: item[index] ? Colors.white : Colors.black,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 15.sp,
+                                        fontSize: 20.sp,
                                       ),
                                     ),
                                   ),
@@ -382,8 +388,10 @@ class Homescreen extends GetView<HomeController> {
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    color: (homeController.selectedList[index+91]
-                                            .isSelected.isFalse)
+                                    color: (homeController
+                                            .selectedList[index + 91]
+                                            .isSelected
+                                            .isFalse)
                                         ? colors.green
                                         : colors.lightgrey,
                                     shape: BoxShape.circle,

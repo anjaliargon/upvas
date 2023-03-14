@@ -8,5 +8,5 @@ class MyColor {
   Color green = Color(0xff00AB55);
   Color darkgrey = Color(0xffBBBCC6);
   Color lightgrey = Color(0xffEAEAEC);
-  Color grey = Color(0xffE7EDF3);
+  Color grey = Color(0xffa4a4a4);
 }

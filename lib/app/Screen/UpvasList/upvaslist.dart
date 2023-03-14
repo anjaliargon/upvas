@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutterotp_firebase/app/Constant/Colors.dart';
-import 'package:flutterotp_firebase/app/Constant/color_constant.dart';
 import 'package:flutterotp_firebase/app/Constant/sizeConstant.dart';
 import 'package:flutterotp_firebase/app/Screen/UpvasList/upvasCantroller.dart';
 import 'package:flutterotp_firebase/app/routes/app_pages.dart';
@@ -19,6 +18,7 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
         builder: (controller) {
           return Obx(() {
             return Scaffold(
+              backgroundColor: colors.white,
                 body: (controller.hasData.isFalse)
                     ? const Center(
                         child: CircularProgressIndicator(),
@@ -28,117 +28,125 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                         children: [
                           Column(
                             children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Container(
-                                      height: 50,
-                                      width: 170,
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width: 1, color: colors.grey),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(10))),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: InkWell(
-                                          onTap: () {
-                                            controller.datePick(
-                                                context: Get.context!);
-                                          },
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
-                                            children: [
-                                              Text(
-                                                controller.selectedDate.value,
-                                                style: TextStyle(
-                                                    fontSize: 12.sp,
-                                                    color: colors.offgrey),
-                                              ),
-                                              const SizedBox(width: 10),
-                                              Image.asset(
-                                                  "assets/icons_image/date.png",
-                                                  height: 20),
-                                            ],
+                              SizedBox(
+                                height: 1.h
+                                ,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15,right: 15),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        height: 6.h,
+                                        width: 40.w,
+                                        decoration: BoxDecoration(
+                                          color: colors.white,
+                                            border: Border.all(
+                                                width: 1, color: colors.grey),
+                                            borderRadius: const BorderRadius.all(
+                                                Radius.circular(10))),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: InkWell(
+                                            onTap: () {
+                                              controller.datePick(
+                                                  context: Get.context!);
+                                            },
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                              children: [
+                                                Text(
+                                                  controller.selectedDate.value,
+                                                  style: TextStyle(
+                                                      fontSize: 12.sp,
+                                                      color: colors.black,fontWeight: FontWeight.bold),
+                                                ),
+                                                const SizedBox(width: 10),
+                                                Image.asset(
+                                                    "assets/icons_image/date.png",
+                                                    height: 20),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Container(
-                                    height: 50,
-                                    width: 170,
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            width: 1, color: colors.grey),
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: DropdownButton<String>(
-                                        isExpanded: true,
-                                        value: controller.dropdownValue.value,
-                                        elevation: 16,
-                                        style: TextStyle(
-                                            fontFamily: 'JosefinSans',
-                                            color: appTheme.textGrayColor,
-                                            fontWeight: FontWeight.w500),
-                                        borderRadius: const BorderRadius.all(
-                                            Radius.circular(12)),
-                                        icon: Image.asset(
-                                            "assets/icons_image/dropdown.png",
-                                            height: 20),
-                                        underline: Container(
-                                          // height: 2,
-                                          color: Colors.white,
+                                    Container(
+                                      height: 6.h,
+                                      width: 40.w,
+                                      decoration: BoxDecoration(
+                                        color: colors.white,
+                                          border: Border.all(
+                                              width: 1, color: colors.grey),
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: DropdownButton<String>(
+                                          isExpanded: true,
+                                          value: controller.dropdownValue.value,
+                                          elevation: 16,
+                                          style: TextStyle(
+                                              color: colors.grey,
+                                              fontWeight: FontWeight.w500),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(12)),
+                                          icon: Image.asset(
+                                              "assets/icons_image/dropdown.png",
+                                              height: 20),
+                                          underline: Container(
+                                            // height: 2,
+                                            color: Colors.white,
+                                          ),
+                                          onChanged: (String? value) {
+                                            // This is called when the user selects an item.
+                                            controller.dropdownValue.value =
+                                                value!;
+                                            controller.data();
+                                          },
+                                          items: controller.dropdown
+                                              .map<DropdownMenuItem<String>>(
+                                                  (String value) {
+                                            return DropdownMenuItem<String>(
+                                              value: value,
+                                              child: Text(
+                                                value,
+                                                style: TextStyle(
+                                                    fontSize: 12.sp,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: colors.black),
+                                              ),
+                                            );
+                                          }).toList(),
                                         ),
-                                        onChanged: (String? value) {
-                                          // This is called when the user selects an item.
-                                          controller.dropdownValue.value =
-                                              value!;
-                                          controller.data();
-                                        },
-                                        items: controller.dropdown
-                                            .map<DropdownMenuItem<String>>(
-                                                (String value) {
-                                          return DropdownMenuItem<String>(
-                                            value: value,
-                                            child: Text(
-                                              value,
-                                              style: TextStyle(
-                                                  fontSize: 12.sp,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: colors.offgrey),
-                                            ),
-                                          );
-                                        }).toList(),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.only(
-                                        right: 8.0, left: 8, bottom: 8),
+                                    padding: const EdgeInsets.all(8.0),
                                     child: Row(
                                       children: [
+                                        SizedBox(height: 2.h,),
                                          Text("Active :",
-                                            style: TextStyle(fontSize: 15.sp)),
+                                            style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.bold)),
                                         const SizedBox(
                                           width: 5,
                                         ),
                                         CircleAvatar(
                                             radius: 5,
                                             backgroundColor:
-                                                appTheme.textGrayColor),
+                                                colors.offgrey),
                                         const SizedBox(
                                           width: 5,
                                         ),
@@ -151,7 +159,8 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                               .toList()
                                               .length
                                               .toString(),style: TextStyle(
-                                          fontSize: 15.sp
+                                          fontSize: 15.sp,
+                                          fontWeight: FontWeight.bold
                                         ),
                                         ),
                                         const SizedBox(
@@ -174,8 +183,8 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                             gridDelegate:
                                                 const SliverGridDelegateWithFixedCrossAxisCount(
                                                     crossAxisCount: 5,
-                                                    crossAxisSpacing: 5,
-                                                    mainAxisSpacing: 5),
+                                                    crossAxisSpacing: 5.0,
+                                                    mainAxisSpacing: 5.0),
                                             itemCount:
                                                 controller.dataList.length,
                                             itemBuilder: (context, index) {
@@ -183,16 +192,15 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                                 return Container(
                                                     decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
-                                                        color: appTheme
-                                                            .unSelectedColor),
+                                                        color: colors.lightgrey),
+                                                    margin: const EdgeInsets.all(5),
                                                     child: Center(
                                                         child: Text(
                                                       (controller
                                                           .dataList[index]
                                                           .toString()),
                                                       style: TextStyle(
-                                                          color: appTheme
-                                                              .textGrayColor,
+                                                          color: colors.darkgrey,
                                                           fontSize: 20.sp),
                                                     )));
                                               });
@@ -219,10 +227,10 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                             offset: const Offset(0, 6),
                                             spreadRadius: 4,
                                             blurRadius: 40,
-                                            color: appTheme.primaryTheme
+                                            color: colors.darkbrown
                                                 .withOpacity(0.2))
                                       ],
-                                      color: appTheme.primaryTheme,
+                                      color: colors.darkbrown,
                                       borderRadius: const BorderRadius.all(
                                           Radius.circular(12))),
                                   height: 50,

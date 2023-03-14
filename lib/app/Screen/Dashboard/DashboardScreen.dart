@@ -23,7 +23,7 @@ class Dashboard extends GetWidget<DashboardController> {
                 backgroundColor: Colors.white,
                 centerTitle: true,
                 title: Text(
-                  "Daily Food",
+                  "Daily Food Planner",
                   style: TextStyle(
                       color: colors.darkbrown, fontWeight: FontWeight.bold),
                 ),
