@@ -1,11 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+
 import 'package:flutterotp_firebase/app/Constant/sizeConstant.dart';
+
+import 'package:flutterotp_firebase/main.dart';
+
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-
-import '../../../../main.dart';
 
 class HomeController extends GetxController {
   RxString selectedDate = "".obs;
@@ -18,6 +20,7 @@ class HomeController extends GetxController {
   ].obs;
   RxBool hasData = false.obs;
   RxString dropdown = "Savar".obs;
+
   @override
   void onInit() {
     selectedDate.value =
@@ -32,14 +35,14 @@ class HomeController extends GetxController {
   void onReady() {
     super.onReady();
   }
+
   data() async {
     hasData.value = false;
-    if (!isNullEmptyOrFalse(
-        box.read(selectedDate.value + dropdown.value))) {
+    if (!isNullEmptyOrFalse(box.read(selectedDate.value + dropdown.value))) {
       getDataList.value =
           ((jsonDecode(box.read(selectedDate.value + dropdown.value))
-          as List<dynamic>)
-              .toList())
+                      as List<dynamic>)
+                  .toList())
               .map((e) => Selected.fromJson(e))
               .toList();
     }
@@ -60,6 +63,7 @@ class HomeController extends GetxController {
   void onClose() {
     super.onClose();
   }
+
   chooseDate({required BuildContext context}) async {
     DateTime? pickedDate = await showDatePicker(
         context: context,
@@ -89,5 +93,4 @@ class Selected {
     data['isselect'] = isSelected.value;
     return data;
   }
-
 }

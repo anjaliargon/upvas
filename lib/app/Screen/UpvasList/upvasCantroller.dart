@@ -57,7 +57,7 @@ class UpavaslistController extends GetxController {
             data: Theme.of(context).copyWith(
               textButtonTheme: TextButtonThemeData(
                 style: TextButton.styleFrom(
-                 // foregroundColor: appTheme.textGrayColor, // button text color
+                  // foregroundColor: appTheme.textGrayColor, // button text color
                 ),
               ),
             ),
