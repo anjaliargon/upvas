@@ -261,9 +261,7 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                   .toList())
                               .map((e) => Selected.fromJson(e))
                               .toList();
-                          list[int.parse(controller.dropdownValue.value)]
-                              .isSelected
-                              .value = true;
+                          list[int.parse(controller.dropdownValue.value)].isSelected.value = true;
                           box.write("${controller.selectedDataDate.value}Savar",
                               jsonEncode(list.map((e) => e.toJson()).toList()));
                         } else if (controller.getSelectedText() == "Sanj") {

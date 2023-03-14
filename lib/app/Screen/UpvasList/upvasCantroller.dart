@@ -29,6 +29,7 @@ class UpavaslistController extends GetxController {
   }
 
   data() async {
+
     hasData.value = false;
     if (!isNullEmptyOrFalse(
         box.read(selectedDate.value + dropdownValue.value))) {
@@ -44,7 +45,7 @@ class UpavaslistController extends GetxController {
     if (!isNullEmptyOrFalse(getDataList)) {
       for (int i = 0; i < getDataList.length; i++) {
         if (getDataList[i].isSelected.isTrue) {
-          dataList.add(getDataList[i].name);
+          dataList.add(getDataList[i].name.value);
         }
       }
     }
