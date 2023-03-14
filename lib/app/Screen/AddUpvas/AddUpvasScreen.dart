@@ -76,8 +76,7 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                   padding: const EdgeInsets.only(
                                       right: 10.0, left: 10),
                                   child: DropdownButton<String>(
-                                    value: controller.dropdownValue.value
-                                        .toString(),
+                                    value: controller.dropdownValue.value.toString(),
                                     elevation: 16,
                                     style: TextStyle(
                                         fontFamily: 'JosefinSans',
@@ -100,8 +99,7 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                     onChanged: (String? value) {
                                       controller.dropdownValue.value = value!;
                                     },
-                                    items: controller.list
-                                        .map<DropdownMenuItem<String>>((value) {
+                                    items: controller.list.map<DropdownMenuItem<String>>((value) {
                                       return DropdownMenuItem<String>(
                                         value: value.toString(),
                                         child: Text((value).toString()),

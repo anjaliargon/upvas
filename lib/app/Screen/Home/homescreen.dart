@@ -33,38 +33,38 @@ class Homescreen extends GetView<HomeController> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        InkWell(
-                          onTap: () {
-                            homeController.chooseDate(context: context);
-                          },
-                          child: Container(
-                            height: 50,
-                            width: 170,
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 1, color: colors.grey),
-                                borderRadius: BorderRadius.circular(10)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Obx(
-                                  () => Text(
-                                    homeController.selectedDate.value,
-                                    style: TextStyle(
-                                        fontSize: 12.sp, color: colors.offgrey),
-                                  ),
-                                ),
-                                // Text("03-13-2023",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500,color: colors.offgrey),),,
-                                const Image(
-                                  image:
-                                      AssetImage('assets/icons_image/date.png'),
-                                  height: 23,
-                                  width: 23,
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
+                           Container(
+                             height: 50,
+                             width: 170,
+                             decoration: BoxDecoration(
+                                 border:
+                                     Border.all(width: 1, color: colors.grey),
+                                 borderRadius: BorderRadius.circular(10)),
+                             child: InkWell(onTap: (){
+                               homeController.datePick(
+                                   context: Get.context!);
+                             },
+                               child: Row(
+                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                 children: [
+                                    Text(
+                                       homeController.selectedDate.value,
+                                       style: TextStyle(
+                                           fontSize: 12.sp, color: colors.offgrey),
+                                     ),
+
+                                   // Text("03-13-2023",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500,color: colors.offgrey),),,
+                                   const Image(
+                                     image:
+                                         AssetImage('assets/icons_image/date.png'),
+                                     height: 23,
+                                     width: 23,
+                                   )
+                                 ],
+                               ),
+                             ),
+                           ),
+
                         Container(
                           height: 50,
                           width: 170,
@@ -219,7 +219,7 @@ class Homescreen extends GetView<HomeController> {
                           ),
                           Divider(
                             height: 1.h,
-                            thickness: 1,
+                            thickness: 3,
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -284,7 +284,7 @@ class Homescreen extends GetView<HomeController> {
                           ),
                           Divider(
                             height: 1.h,
-                            thickness: 1,
+                            thickness: 3,
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -349,7 +349,7 @@ class Homescreen extends GetView<HomeController> {
                           ),
                           Divider(
                             height: 1.h,
-                            thickness: 1,
+                            thickness: 3,
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -412,7 +412,7 @@ class Homescreen extends GetView<HomeController> {
                           ),
                           Divider(
                             height: 1.h,
-                            thickness: 1,
+                            thickness: 3,
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),

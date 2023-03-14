@@ -278,8 +278,20 @@ class HomeController extends GetxController {
     super.onClose();
   }
 
-  chooseDate({required BuildContext context}) async {
+  datePick({required BuildContext context}) async {
     DateTime? pickedDate = await showDatePicker(
+        builder: (context, child) {
+          return Theme(
+            data: Theme.of(context).copyWith(
+              textButtonTheme: TextButtonThemeData(
+                style: TextButton.styleFrom(
+                  // foregroundColor: appTheme.textGrayColor, // button text color
+                ),
+              ),
+            ),
+            child: child!,
+          );
+        },
         context: context,
         initialDate: DateTime.now(),
         firstDate: DateTime(1950),
@@ -287,6 +299,7 @@ class HomeController extends GetxController {
     if (pickedDate != null) {
       print(pickedDate);
       selectedDate.value = DateFormat('dd/MM/yyyy').format(pickedDate);
+      data();
     } else {}
   }
 }

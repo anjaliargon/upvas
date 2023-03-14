@@ -130,8 +130,8 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                         right: 8.0, left: 8, bottom: 8),
                                     child: Row(
                                       children: [
-                                        const Text("Active",
-                                            style: TextStyle(fontSize: 15)),
+                                         Text("Active :",
+                                            style: TextStyle(fontSize: 15.sp)),
                                         const SizedBox(
                                           width: 5,
                                         ),
@@ -150,7 +150,9 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                               })
                                               .toList()
                                               .length
-                                              .toString(),
+                                              .toString(),style: TextStyle(
+                                          fontSize: 15.sp
+                                        ),
                                         ),
                                         const SizedBox(
                                           width: 10,
@@ -191,7 +193,7 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                                       style: TextStyle(
                                                           color: appTheme
                                                               .textGrayColor,
-                                                          fontSize: 20),
+                                                          fontSize: 20.sp),
                                                     )));
                                               });
                                             },

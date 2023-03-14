@@ -18,9 +18,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
       return GetMaterialApp(
+
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes,
-        theme: ThemeData(fontFamily: 'JosefinSans'),
+        theme: ThemeData(fontFamily: 'JosefinSans',),
         debugShowCheckedModeBanner: false,
         home: Dashboard(),
       );
