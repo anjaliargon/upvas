@@ -1,4 +1,4 @@
-import 'package:flutterotp_firebase/app/Screen/UpvasList/upvasCantroller.dart';
+import 'package:flutterotp_firebase/app/Screen/UpvasList/controller/upvasCantroller.dart';
 import 'package:get/get.dart';
 
 

@@ -5,7 +5,6 @@ import 'package:flutterotp_firebase/app/Constant/Colors.dart';
 import 'package:flutterotp_firebase/app/Screen/Home/controller/Homecontroller.dart';
 
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../main.dart';
@@ -32,7 +31,7 @@ class Homescreen extends GetView<HomeController> {
                       height: 2.h,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 15,right: 15),
+                      padding: const EdgeInsets.only(left: 15, right: 15),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -41,14 +40,16 @@ class Homescreen extends GetView<HomeController> {
                             width: 40.w,
                             decoration: BoxDecoration(
                                 color: colors.white,
-                                border: Border.all(width: 1, color: colors.grey),
+                                border:
+                                    Border.all(width: 1, color: colors.grey),
                                 borderRadius: BorderRadius.circular(10)),
                             child: InkWell(
                               onTap: () {
                                 homeController.datePick(context: Get.context!);
                               },
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Text(
                                     homeController.selectedDate.value,
@@ -59,11 +60,11 @@ class Homescreen extends GetView<HomeController> {
                                   ),
 
                                   // Text("03-13-2023",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500,color: colors.offgrey),),,
-                                  const Image(
-                                    image:
-                                        AssetImage('assets/icons_image/date.png'),
-                                    height: 23,
-                                    width: 23,
+                                  Image(
+                                    image: const AssetImage(
+                                        'assets/icons_image/date.png'),
+                                    height: 5.h,
+                                    width: 5.w,
                                   )
                                 ],
                               ),
@@ -74,7 +75,8 @@ class Homescreen extends GetView<HomeController> {
                             width: 40.w,
                             decoration: BoxDecoration(
                                 color: colors.white,
-                                border: Border.all(width: 1, color: colors.grey),
+                                border:
+                                    Border.all(width: 1, color: colors.grey),
                                 borderRadius: BorderRadius.circular(10)),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -83,17 +85,16 @@ class Homescreen extends GetView<HomeController> {
                                   isExpanded: true,
                                   elevation: 0,
                                   underline: Container(
-                                    // height: 2,
-                                    color: Colors.white,
+                                    color: colors.white,
                                   ),
                                   icon: SizedBox(
                                     height: 5.h,
                                     width: 5.w,
-                                    child: const Image(
-                                      image: AssetImage(
+                                    child: Image(
+                                      image: const AssetImage(
                                           'assets/icons_image/dropdown.png'),
-                                      height: 1,
-                                      width: 1,
+                                      height: 1.h,
+                                      width: 1.w,
                                     ),
                                   ),
                                   onChanged: (value) {
@@ -101,8 +102,8 @@ class Homescreen extends GetView<HomeController> {
                                     homeController.data();
                                   },
                                   value: homeController.dropdown.value,
-                                  items:
-                                      homeController.dropdownList.map((selected) {
+                                  items: homeController.dropdownList
+                                      .map((selected) {
                                     return DropdownMenuItem(
                                       value: selected,
                                       child: Text(
@@ -138,8 +139,8 @@ class Homescreen extends GetView<HomeController> {
                                     fontSize: 13.sp,
                                     fontWeight: FontWeight.w600),
                               ),
-                              const CircleAvatar(
-                                backgroundColor: Colors.green,
+                              CircleAvatar(
+                                backgroundColor: colors.green,
                                 radius: 5,
                               ),
                               Padding(
@@ -168,9 +169,9 @@ class Homescreen extends GetView<HomeController> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: GridView.builder(
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
-                              itemCount: 64,
+                              itemCount: 65,
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 5,
@@ -182,10 +183,6 @@ class Homescreen extends GetView<HomeController> {
                                 onTap: () {
                                   homeController.selectedList[index].isSelected
                                       .toggle();
-                                  // homeController.selectedList.listen((value) {
-                                  //   homeController.selectedList[index] =
-                                  //       value as Selected;
-                                  // });
                                   box.write(
                                       homeController.selectedDate.value +
                                           homeController.dropdown.value,
@@ -211,9 +208,8 @@ class Homescreen extends GetView<HomeController> {
                                                 .selectedList[index]
                                                 .isSelected
                                                 .isFalse)
-                                            ? Colors.white
+                                            ? colors.white
                                             : colors.darkgrey,
-                                        //  color: item[index] ? Colors.white : Colors.black,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20.sp,
                                       ),
@@ -230,7 +226,7 @@ class Homescreen extends GetView<HomeController> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: GridView.builder(
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               itemCount: 10,
                               gridDelegate:
@@ -243,7 +239,7 @@ class Homescreen extends GetView<HomeController> {
                                   InkWell(
                                 onTap: () {
                                   homeController
-                                      .selectedList[index + 64].isSelected
+                                      .selectedList[index + 65].isSelected
                                       .toggle();
                                   // homeController.selectedList.listen((value) {
                                   //   homeController.selectedList[index] =
@@ -259,7 +255,7 @@ class Homescreen extends GetView<HomeController> {
                                 child: Container(
                                   decoration: BoxDecoration(
                                     color: (homeController
-                                            .selectedList[index + 64]
+                                            .selectedList[index + 65]
                                             .isSelected
                                             .isFalse)
                                         ? colors.green
@@ -270,15 +266,14 @@ class Homescreen extends GetView<HomeController> {
                                   child: Center(
                                     child: Text(
                                       homeController
-                                          .selectedList[index + 64].name.value,
+                                          .selectedList[index + 65].name.value,
                                       style: TextStyle(
                                         color: (homeController
-                                                .selectedList[index + 64]
+                                                .selectedList[index + 65]
                                                 .isSelected
                                                 .isFalse)
-                                            ? Colors.white
+                                            ? colors.white
                                             : colors.darkgrey,
-                                        //  color: item[index] ? Colors.white : Colors.black,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15.sp,
                                       ),
@@ -295,7 +290,7 @@ class Homescreen extends GetView<HomeController> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: GridView.builder(
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               itemCount: 17,
                               gridDelegate:
@@ -308,7 +303,7 @@ class Homescreen extends GetView<HomeController> {
                                   InkWell(
                                 onTap: () {
                                   homeController
-                                      .selectedList[index + 74].isSelected
+                                      .selectedList[index + 75].isSelected
                                       .toggle();
                                   // homeController.selectedList.listen((value) {
                                   //   homeController.selectedList[index] =
@@ -324,7 +319,7 @@ class Homescreen extends GetView<HomeController> {
                                 child: Container(
                                   decoration: BoxDecoration(
                                     color: (homeController
-                                            .selectedList[index + 74]
+                                            .selectedList[index + 75]
                                             .isSelected
                                             .isFalse)
                                         ? colors.green
@@ -335,15 +330,14 @@ class Homescreen extends GetView<HomeController> {
                                   child: Center(
                                     child: Text(
                                       homeController
-                                          .selectedList[index + 74].name.value,
+                                          .selectedList[index + 75].name.value,
                                       style: TextStyle(
                                         color: (homeController
-                                                .selectedList[index + 74]
+                                                .selectedList[index + 75]
                                                 .isSelected
                                                 .isFalse)
-                                            ? Colors.white
+                                            ? colors.white
                                             : colors.darkgrey,
-                                        //  color: item[index] ? Colors.white : Colors.black,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15.sp,
                                       ),
@@ -360,7 +354,7 @@ class Homescreen extends GetView<HomeController> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: GridView.builder(
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               itemCount: 5,
                               gridDelegate:
@@ -373,7 +367,7 @@ class Homescreen extends GetView<HomeController> {
                                   InkWell(
                                 onTap: () {
                                   homeController
-                                      .selectedList[index + 91].isSelected
+                                      .selectedList[index + 92].isSelected
                                       .toggle();
                                   // homeController.selectedList.listen((value) {
                                   //   homeController.selectedList[index] =
@@ -389,7 +383,7 @@ class Homescreen extends GetView<HomeController> {
                                 child: Container(
                                   decoration: BoxDecoration(
                                     color: (homeController
-                                            .selectedList[index + 91]
+                                            .selectedList[index + 92]
                                             .isSelected
                                             .isFalse)
                                         ? colors.green
@@ -400,13 +394,13 @@ class Homescreen extends GetView<HomeController> {
                                   child: Center(
                                     child: Text(
                                       homeController
-                                          .selectedList[index + 91].name.value,
+                                          .selectedList[index + 92].name.value,
                                       style: TextStyle(
                                         color: (homeController
-                                                .selectedList[index + 91]
+                                                .selectedList[index + 92]
                                                 .isSelected
                                                 .isFalse)
-                                            ? Colors.white
+                                            ? colors.white
                                             : colors.darkgrey,
                                         //  color: item[index] ? Colors.white : Colors.black,
                                         fontWeight: FontWeight.bold,
@@ -425,7 +419,7 @@ class Homescreen extends GetView<HomeController> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: GridView.builder(
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               itemCount: 8,
                               gridDelegate:
@@ -438,12 +432,8 @@ class Homescreen extends GetView<HomeController> {
                                   InkWell(
                                 onTap: () {
                                   homeController
-                                      .selectedList[index + 96].isSelected
+                                      .selectedList[index + 97].isSelected
                                       .toggle();
-                                  // homeController.selectedList.listen((value) {
-                                  //   homeController.selectedList[index] =
-                                  //       value as Selected;
-                                  // });
                                   box.write(
                                       homeController.selectedDate.value +
                                           homeController.dropdown.value,
@@ -454,7 +444,7 @@ class Homescreen extends GetView<HomeController> {
                                 child: Container(
                                   decoration: BoxDecoration(
                                     color: (homeController
-                                            .selectedList[index + 96]
+                                            .selectedList[index + 97]
                                             .isSelected
                                             .isFalse)
                                         ? colors.green
@@ -465,15 +455,14 @@ class Homescreen extends GetView<HomeController> {
                                   child: Center(
                                     child: Text(
                                       homeController
-                                          .selectedList[index + 96].name.value,
+                                          .selectedList[index + 97].name.value,
                                       style: TextStyle(
                                         color: (homeController
-                                                .selectedList[index + 96]
+                                                .selectedList[index + 97]
                                                 .isSelected
                                                 .isFalse)
-                                            ? Colors.white
+                                            ? colors.white
                                             : colors.darkgrey,
-                                        //  color: item[index] ? Colors.white : Colors.black,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15.sp,
                                       ),

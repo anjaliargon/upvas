@@ -1,13 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutterotp_firebase/app/Constant/sizeConstant.dart';
 import 'package:flutterotp_firebase/app/Screen/Home/controller/Homecontroller.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../main.dart';
-import '../../Constant/sizeConstant.dart';
-
 class UpavaslistController extends GetxController {
   RxString selectedDate = "".obs;
   RxList<String> dropdown = <String>[

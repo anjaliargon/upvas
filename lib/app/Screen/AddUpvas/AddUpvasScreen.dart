@@ -3,14 +3,14 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutterotp_firebase/app/Constant/Colors.dart';
 import 'package:flutterotp_firebase/app/Constant/app_constant.dart';
-import 'package:flutterotp_firebase/app/Screen/AddUpvas/AppUpvasController.dart';
+import 'package:flutterotp_firebase/app/Screen/AddUpvas/controller/AppUpvasController.dart';
 import 'package:flutterotp_firebase/app/Screen/Home/controller/Homecontroller.dart';
 import 'package:flutterotp_firebase/app/routes/app_pages.dart';
 
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../../main.dart';
+import '../../../main.dart';
 
 class AddUpvasView extends GetWidget<AddUpvasController> {
   const AddUpvasView({Key? key}) : super(key: key);
@@ -20,24 +20,18 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
     MyColor colors = MyColor();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: colors.white,
         elevation: 0,
         leading: InkWell(
             onTap: () {
               Get.back();
             },
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: const Color(0xffF3F3F3),
-                    borderRadius: BorderRadius.circular(10)),
-                child: Image.asset(
-                  "assets/icons_image/back.png",
-                ),
-              ),
+            child: Image.asset(
+              "assets/icons_image/Back.png",
+              height: 7.h,
+              width: 7.w,
             )),
-        title: const Text('Add Upvas', style: TextStyle(color: Colors.black)),
+        title: Text('Add Upvas', style: TextStyle(color: colors.black)),
         centerTitle: true,
       ),
       body: Obx(() {
@@ -63,8 +57,8 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                   style: TextStyle(
                                     fontSize: 12.sp,
                                   )),
-                              const SizedBox(
-                                height: 12,
+                               SizedBox(
+                                height: 1.h,
                               ),
                               Container(
                                 height: 6.h,
@@ -82,20 +76,20 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                     elevation: 16,
                                     style: TextStyle(
                                         color: colors.black,
-                                        fontSize: 17,
+                                        fontSize: 14.sp,
                                         fontWeight: FontWeight.bold),
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(12)),
                                     icon: Padding(
                                       padding: const EdgeInsets.only(
-                                          left: 35.0, right: 0),
+                                          left: 44.0, right: 0),
                                       child: Image.asset(
                                           "assets/icons_image/dropdown.png",
                                           height: 25),
                                     ),
                                     underline: Container(
                                       // height: 2,
-                                      color: Colors.white,
+                                      color: colors.white,
                                     ),
                                     onChanged: (String? value) {
                                       controller.dropdownValue.value = value!;
@@ -117,12 +111,12 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text("Date", style: TextStyle(fontSize: 12.sp)),
-                              const SizedBox(
-                                height: 12,
+                               SizedBox(
+                                height: 1.h,
                               ),
                               Container(
                                 height: 6.h,
-                                width: 32.w,
+                                width: 34.w,
                                 decoration: BoxDecoration(
                                     border: Border.all(color: colors.grey),
                                     borderRadius: const BorderRadius.all(
@@ -136,18 +130,24 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                     },
                                     child: Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                          MainAxisAlignment.spaceBetween,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: [
-                                        Text(controller.selectedDate.value,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: colors.black)),
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 2),
+                                          child: Text(controller.selectedDate.value,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: colors.black)),
+                                        ),
                                         const SizedBox(width: 3),
-                                        Image.asset(
-                                            "assets/icons_image/date.png",
-                                            height: 20),
+                                        Padding(
+                                          padding: const EdgeInsets.only(right: 2),
+                                          child: Image.asset(
+                                              "assets/icons_image/date.png",
+                                              height: 3.h),
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -188,15 +188,15 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                         : Image.asset(
                                             "assets/icons_image/Box.png",
                                             height: 3.h),
-                                    const SizedBox(
-                                      width: 10,
+                                    SizedBox(
+                                      width: 3.w,
                                     ),
                                     const Text("Savar"),
                                   ],
                                 ),
                               ),
-                              const SizedBox(
-                                width: 15,
+                              SizedBox(
+                                width: 5.w,
                               ),
                               InkWell(
                                 onTap: () {
@@ -214,15 +214,15 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                         : Image.asset(
                                             "assets/icons_image/Box.png",
                                             height: 3.h),
-                                    const SizedBox(
-                                      width: 10,
+                                     SizedBox(
+                                      width: 3.w,
                                     ),
                                     const Text("Sanj"),
                                   ],
                                 ),
                               ),
-                              const SizedBox(
-                                width: 15,
+                               SizedBox(
+                                width:5.w,
                               ),
                               InkWell(
                                 onTap: () {
@@ -240,8 +240,8 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                         : Image.asset(
                                             "assets/icons_image/Box.png",
                                             height: 3.h),
-                                    const SizedBox(
-                                      width: 10,
+                                     SizedBox(
+                                      width: 3.w,
                                     ),
                                     const Text("Full Day"),
                                   ],
@@ -252,15 +252,14 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 80),
+                     SizedBox(height: 10.h),
                     InkWell(
                       onTap: () async {
                         if (controller.getSelectedText() ==
                             timeConstant.savar) {
-                          List<Selected> list = await ((jsonDecode(box
-                                      .read(controller.DataDate.value +
-                                          timeConstant
-                                              .savar)) as List<dynamic>)
+                          List<Selected> list = await ((jsonDecode(box.read(
+                                      controller.DataDate.value +
+                                          timeConstant.savar)) as List<dynamic>)
                                   .toList())
                               .map((e) => Selected.fromJson(e))
                               .toList();
@@ -272,15 +271,13 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                           });
 
                           box.write(
-                              controller.DataDate.value +
-                                  timeConstant.savar,
+                              controller.DataDate.value + timeConstant.savar,
                               jsonEncode(list.map((e) => e.toJson()).toList()));
                         } else if (controller.getSelectedText() ==
                             timeConstant.Sanj) {
                           List<Selected> list = await ((jsonDecode(box.read(
-                                          controller.DataDate.value +
-                                              timeConstant.Sanj))
-                                      as List<dynamic>)
+                                      controller.DataDate.value +
+                                          timeConstant.Sanj)) as List<dynamic>)
                                   .toList())
                               .map((e) => Selected.fromJson(e))
                               .toList();
@@ -291,21 +288,18 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                             }
                           });
                           box.write(
-                              controller.DataDate.value +
-                                  timeConstant.Sanj,
+                              controller.DataDate.value + timeConstant.Sanj,
                               jsonEncode(list.map((e) => e.toJson()).toList()));
                         } else {
                           List<Selected> list = await ((jsonDecode(box.read(
-                                          controller.DataDate.value +
-                                              timeConstant.Sanj))
-                                      as List<dynamic>)
+                                      controller.DataDate.value +
+                                          timeConstant.Sanj)) as List<dynamic>)
                                   .toList())
                               .map((e) => Selected.fromJson(e))
                               .toList();
-                          List<Selected> listSavar = await ((jsonDecode(box
-                                      .read(controller.DataDate.value +
-                                          timeConstant
-                                              .savar)) as List<dynamic>)
+                          List<Selected> listSavar = await ((jsonDecode(
+                                      box.read(controller.DataDate.value +
+                                          timeConstant.savar)) as List<dynamic>)
                                   .toList())
                               .map((e) => Selected.fromJson(e))
                               .toList();
@@ -322,12 +316,10 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                             }
                           });
                           box.write(
-                              controller.DataDate.value +
-                                  timeConstant.Sanj,
+                              controller.DataDate.value + timeConstant.Sanj,
                               jsonEncode(list.map((e) => e.toJson()).toList()));
                           box.write(
-                              controller.DataDate.value +
-                                  timeConstant.savar,
+                              controller.DataDate.value + timeConstant.savar,
                               jsonEncode(
                                   listSavar.map((e) => e.toJson()).toList()));
                         }
@@ -344,7 +336,7 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                           child: Text(
                             "Save",
                             style: TextStyle(
-                                color: Colors.white,
+                                color: colors.white,
                                 fontSize: 12.sp,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -352,11 +344,10 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                       ),
                     )
                   ]),
-                  Positioned(
-                      child: Image.asset(
+                  Image.asset(
                     "assets/icons_image/temple.png",
-                    color: Colors.black,
-                  )),
+                    color: colors.black,
+                  ),
                 ],
               );
       }),

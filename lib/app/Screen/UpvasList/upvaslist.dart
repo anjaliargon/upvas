@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterotp_firebase/app/Constant/Colors.dart';
 import 'package:flutterotp_firebase/app/Constant/sizeConstant.dart';
-import 'package:flutterotp_firebase/app/Screen/UpvasList/upvasCantroller.dart';
+import 'package:flutterotp_firebase/app/Screen/UpvasList/controller/upvasCantroller.dart';
 import 'package:flutterotp_firebase/app/routes/app_pages.dart';
 
 import 'package:get/get.dart';
@@ -98,10 +98,11 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                               Radius.circular(12)),
                                           icon: Image.asset(
                                               "assets/icons_image/dropdown.png",
-                                              height: 20),
+                                              height: 5.h
+                                          ),
                                           underline: Container(
                                             // height: 2,
-                                            color: Colors.white,
+                                            color: colors.white,
                                           ),
                                           onChanged: (String? value) {
                                             // This is called when the user selects an item.
@@ -247,10 +248,10 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                         const SizedBox(
                                           width: 8,
                                         ),
-                                        const Text(
+                                         Text(
                                           "Add Upvas",
                                           style: TextStyle(
-                                              color: Colors.white,
+                                              color: colors.white,
                                               fontSize: 14),
                                         ),
                                       ]),

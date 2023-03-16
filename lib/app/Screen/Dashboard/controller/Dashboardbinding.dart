@@ -1,4 +1,4 @@
-import 'package:flutterotp_firebase/app/Screen/Dashboard/DashboardController.dart';
+import 'package:flutterotp_firebase/app/Screen/Dashboard/controller/DashboardController.dart';
 import 'package:get/get.dart';
 
 class DashboardBinding extends Bindings {

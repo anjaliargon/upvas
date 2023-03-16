@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterotp_firebase/app/Constant/Colors.dart';
-import 'package:flutterotp_firebase/app/Screen/Dashboard/DashboardController.dart';
+import 'package:flutterotp_firebase/app/Screen/Dashboard/controller/DashboardController.dart';
 import 'package:flutterotp_firebase/app/Screen/Home/homescreen.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
@@ -45,19 +45,19 @@ class Dashboard extends GetWidget<DashboardController> {
                           child: (controller.selectedIndex.value == 0)
                               ? Image.asset(
                                   'assets/icons_image/home_select.png',
-                                  height: 22,
-                                  width: 22)
+                              height: 5.h,
+                              width: 5.w)
                               : Image.asset(
                                   'assets/icons_image/home_unselect.png',
-                                  height: 22,
-                                  width: 22),
+                                  height: 5.h,
+                                  width: 5.w),
                         ),
-                        const Padding(
-                          padding: EdgeInsets.only(left: 5),
+                         Padding(
+                          padding: const EdgeInsets.only(left: 5),
                           child: Text("Home",
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 18,
+                                fontSize: 14.sp,
                               )),
                         )
                       ],
@@ -70,18 +70,18 @@ class Dashboard extends GetWidget<DashboardController> {
                           child: (controller.selectedIndex.value == 0)
                               ? Image.asset(
                                   'assets/icons_image/menu_unselect.png',
-                                  height: 20,
-                                  width: 20)
+                              height: 5.h,
+                              width: 5.w)
                               : Image.asset(
                                   'assets/icons_image/menu_select.png',
-                                  height: 20,
-                                  width: 20),
+                              height: 5.h,
+                              width: 5.w),
                         ),
-                        const Padding(
-                          padding: EdgeInsets.only(bottom: 3, left: 5),
+                         Padding(
+                          padding: const EdgeInsets.only(bottom: 3, left: 5),
                           child: Text("Upavas List",
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600, fontSize: 18)),
+                                  fontWeight: FontWeight.w600, fontSize: 14.sp)),
                         )
                       ],
                     ),
@@ -90,7 +90,7 @@ class Dashboard extends GetWidget<DashboardController> {
               ),
               body: TabBarView(
                   physics: const NeverScrollableScrollPhysics(),
-                  children: [Homescreen(), UpavaslistView()]),
+                  children: [Homescreen(), const UpavaslistView()]),
             ),
           );
         });

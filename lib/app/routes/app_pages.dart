@@ -1,12 +1,12 @@
-import 'package:flutterotp_firebase/app/Screen/AddUpvas/AddUpvasBinding.dart';
+import 'package:flutterotp_firebase/app/Screen/AddUpvas/controller/AddUpvasBinding.dart';
 import 'package:flutterotp_firebase/app/Screen/Dashboard/DashboardScreen.dart';
-import 'package:flutterotp_firebase/app/Screen/Dashboard/Dashboardbinding.dart';
+import 'package:flutterotp_firebase/app/Screen/Dashboard/controller/Dashboardbinding.dart';
 import 'package:flutterotp_firebase/app/Screen/Home/homescreen.dart';
-import 'package:flutterotp_firebase/app/Screen/UpvasList/upvasBinding.dart';
+import 'package:flutterotp_firebase/app/Screen/UpvasList/controller/upvasBinding.dart';
 import 'package:get/get.dart';
 
-import '../Screen/AddUpvas/AddUpvasScreen.dart';
 
+import '../Screen/AddUpvas/AddUpvasScreen.dart';
 import '../Screen/Home/controller/Homecontrollerbinding.dart';
 import '../Screen/UpvasList/upvaslist.dart';
 

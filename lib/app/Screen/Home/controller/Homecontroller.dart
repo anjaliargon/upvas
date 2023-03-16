@@ -11,10 +11,6 @@ import 'package:intl/intl.dart';
 
 class HomeController extends GetxController {
   RxString selectedDate = "".obs;
-
-  // RxList<Selected> selectedList =
-  //     List.generate(100, (index) => Selected(isSelected: false.obs)).obs;
-
   RxList<Selected> selectedList = RxList<Selected>([
     Selected(isSelected: false.obs, name: "1".obs),
     Selected(isSelected: false.obs, name: "2".obs),
@@ -75,6 +71,7 @@ class HomeController extends GetxController {
     Selected(isSelected: false.obs, name: "57".obs),
     Selected(isSelected: false.obs, name: "58".obs),
     Selected(isSelected: false.obs, name: "59".obs),
+    Selected(isSelected: false.obs, name: "60".obs),
     Selected(isSelected: false.obs, name: "61".obs),
     Selected(isSelected: false.obs, name: "62".obs),
     Selected(isSelected: false.obs, name: "63".obs),
@@ -155,7 +152,7 @@ class HomeController extends GetxController {
               .map((e) => Selected.fromJson(e))
               .toList();
     }
-    if (getDataList.isEmpty) {
+    if (getDataList.length <= 0) {
       box.write(selectedDate.value + dropdown.value, jsonEncode(selectedList.map((e) => e.toJson()).toList()));
       selectedList.clear();
       selectedList.addAll(RxList<Selected>([
@@ -218,6 +215,7 @@ class HomeController extends GetxController {
         Selected(isSelected: false.obs, name: "57".obs),
         Selected(isSelected: false.obs, name: "58".obs),
         Selected(isSelected: false.obs, name: "59".obs),
+        Selected(isSelected: false.obs, name: "60".obs),
         Selected(isSelected: false.obs, name: "61".obs),
         Selected(isSelected: false.obs, name: "62".obs),
         Selected(isSelected: false.obs, name: "63".obs),

@@ -5,8 +5,8 @@ import 'package:flutterotp_firebase/app/Constant/sizeConstant.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-import '../../../../main.dart';
-import '../Home/controller/Homecontroller.dart';
+import '../../../../../main.dart';
+import '../../Home/controller/Homecontroller.dart';
 
 class AddUpvasController extends GetxController {
   RxString selectedDate = "".obs;
@@ -106,6 +106,7 @@ class AddUpvasController extends GetxController {
               Selected(isSelected: false.obs, name: "57".obs),
               Selected(isSelected: false.obs, name: "58".obs),
               Selected(isSelected: false.obs, name: "59".obs),
+              Selected(isSelected: false.obs, name: "60".obs),
               Selected(isSelected: false.obs, name: "61".obs),
               Selected(isSelected: false.obs, name: "62".obs),
               Selected(isSelected: false.obs, name: "63".obs),
@@ -212,6 +213,7 @@ class AddUpvasController extends GetxController {
           Selected(isSelected: false.obs, name: "57".obs),
           Selected(isSelected: false.obs, name: "58".obs),
           Selected(isSelected: false.obs, name: "59".obs),
+          Selected(isSelected: false.obs, name: "60".obs),
           Selected(isSelected: false.obs, name: "61".obs),
           Selected(isSelected: false.obs, name: "62".obs),
           Selected(isSelected: false.obs, name: "63".obs),
@@ -329,6 +331,7 @@ class AddUpvasController extends GetxController {
               Selected(isSelected: false.obs, name: "57".obs),
               Selected(isSelected: false.obs, name: "58".obs),
               Selected(isSelected: false.obs, name: "59".obs),
+              Selected(isSelected: false.obs, name: "60".obs),
               Selected(isSelected: false.obs, name: "61".obs),
               Selected(isSelected: false.obs, name: "62".obs),
               Selected(isSelected: false.obs, name: "63".obs),
@@ -435,6 +438,7 @@ class AddUpvasController extends GetxController {
           Selected(isSelected: false.obs, name: "57".obs),
           Selected(isSelected: false.obs, name: "58".obs),
           Selected(isSelected: false.obs, name: "59".obs),
+          Selected(isSelected: false.obs, name: "60".obs),
           Selected(isSelected: false.obs, name: "61".obs),
           Selected(isSelected: false.obs, name: "62".obs),
           Selected(isSelected: false.obs, name: "63".obs),
@@ -567,6 +571,7 @@ class AddUpvasController extends GetxController {
               Selected(isSelected: false.obs, name: "57".obs),
               Selected(isSelected: false.obs, name: "58".obs),
               Selected(isSelected: false.obs, name: "59".obs),
+              Selected(isSelected: false.obs, name: "60".obs),
               Selected(isSelected: false.obs, name: "61".obs),
               Selected(isSelected: false.obs, name: "62".obs),
               Selected(isSelected: false.obs, name: "63".obs),
@@ -676,6 +681,7 @@ class AddUpvasController extends GetxController {
           Selected(isSelected: false.obs, name: "57".obs),
           Selected(isSelected: false.obs, name: "58".obs),
           Selected(isSelected: false.obs, name: "59".obs),
+          Selected(isSelected: false.obs, name: "60".obs),
           Selected(isSelected: false.obs, name: "61".obs),
           Selected(isSelected: false.obs, name: "62".obs),
           Selected(isSelected: false.obs, name: "63".obs),

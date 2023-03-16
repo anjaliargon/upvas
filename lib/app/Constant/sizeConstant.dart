@@ -16,35 +16,35 @@ class MySize {
   static late double scaleFactorWidth;
   static late double scaleFactorHeight;
 
-  void init(BuildContext context) {
-    _mediaQueryData = MediaQuery.of(context);
-
-    screenWidth = _mediaQueryData.size.width;
-    screenHeight = _mediaQueryData.size.height;
-    isMini = _mediaQueryData.size.height < 750;
-    double _safeAreaWidth =
-        _mediaQueryData.padding.left + _mediaQueryData.padding.right;
-    double _safeAreaHeight =
-        _mediaQueryData.padding.top + _mediaQueryData.padding.bottom;
-    safeWidth = (screenWidth - _safeAreaWidth);
-    safeHeight = (screenHeight - _safeAreaHeight);
-
-    safeWidth = (screenWidth - _safeAreaWidth);
-    safeHeight = (screenHeight - _safeAreaHeight);
-
-    scaleFactorHeight = (safeHeight! / 748);
-    if (scaleFactorHeight < 1) {
-      double diff = (1 - scaleFactorHeight) * (1 - scaleFactorHeight);
-      scaleFactorHeight += diff;
-    }
-
-    scaleFactorWidth = (safeWidth! / 360);
-
-    if (scaleFactorWidth < 1) {
-      double diff = (1 - scaleFactorWidth) * (1 - scaleFactorWidth);
-      scaleFactorWidth += diff;
-    }
-  }
+  // void init(BuildContext context) {
+  //   _mediaQueryData = MediaQuery.of(context);
+  //
+  //   screenWidth = _mediaQueryData.size.width;
+  //   screenHeight = _mediaQueryData.size.height;
+  //   isMini = _mediaQueryData.size.height < 750;
+  //   double _safeAreaWidth =
+  //       _mediaQueryData.padding.left + _mediaQueryData.padding.right;
+  //   double _safeAreaHeight =
+  //       _mediaQueryData.padding.top + _mediaQueryData.padding.bottom;
+  //   safeWidth = (screenWidth - _safeAreaWidth);
+  //   safeHeight = (screenHeight - _safeAreaHeight);
+  //
+  //   safeWidth = (screenWidth - _safeAreaWidth);
+  //   safeHeight = (screenHeight - _safeAreaHeight);
+  //
+  //   scaleFactorHeight = (safeHeight! / 748);
+  //   if (scaleFactorHeight < 1) {
+  //     double diff = (1 - scaleFactorHeight) * (1 - scaleFactorHeight);
+  //     scaleFactorHeight += diff;
+  //   }
+  //
+  //   scaleFactorWidth = (safeWidth! / 360);
+  //
+  //   if (scaleFactorWidth < 1) {
+  //     double diff = (1 - scaleFactorWidth) * (1 - scaleFactorWidth);
+  //     scaleFactorWidth += diff;
+  //   }
+  // }
 
   static double getWidth(double size) {
     return (size * scaleFactorWidth);
@@ -212,15 +212,15 @@ getSnackBar(
   );
 }
 
-String getFirstTwoLetterCapital({required String text}) {
-  return (!isNullEmptyOrFalse(text))
-      ? (text.length == 1)
-          ? text.toUpperCase()
-          : (text.length >= 2)
-              ? "${text[0].toUpperCase()}${text[1].toUpperCase()}"
-              : "gkg"
-      : "gsg";
-}
+// String getFirstTwoLetterCapital({required String text}) {
+//   return (!isNullEmptyOrFalse(text))
+//       ? (text.length == 1)
+//           ? text.toUpperCase()
+//           : (text.length >= 2)
+//               ? "${text[0].toUpperCase()}${text[1].toUpperCase()}"
+//               : "gkg"
+//       : "gsg";
+// }
 
 getGetXSnackBar({String title = "", String msg = ""}) {
   return Get.snackbar(
