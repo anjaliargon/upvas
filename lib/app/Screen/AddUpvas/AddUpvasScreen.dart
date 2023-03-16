@@ -256,10 +256,10 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                     InkWell(
                       onTap: () async {
                         if (controller.getSelectedText() ==
-                            ArgumentConstant.savar) {
+                            timeConstant.savar) {
                           List<Selected> list = await ((jsonDecode(box
-                                      .read(controller.selectedDataDate.value +
-                                          ArgumentConstant
+                                      .read(controller.DataDate.value +
+                                          timeConstant
                                               .savar)) as List<dynamic>)
                                   .toList())
                               .map((e) => Selected.fromJson(e))
@@ -272,14 +272,14 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                           });
 
                           box.write(
-                              controller.selectedDataDate.value +
-                                  ArgumentConstant.savar,
+                              controller.DataDate.value +
+                                  timeConstant.savar,
                               jsonEncode(list.map((e) => e.toJson()).toList()));
                         } else if (controller.getSelectedText() ==
-                            ArgumentConstant.Sanj) {
+                            timeConstant.Sanj) {
                           List<Selected> list = await ((jsonDecode(box.read(
-                                          controller.selectedDataDate.value +
-                                              ArgumentConstant.Sanj))
+                                          controller.DataDate.value +
+                                              timeConstant.Sanj))
                                       as List<dynamic>)
                                   .toList())
                               .map((e) => Selected.fromJson(e))
@@ -291,20 +291,20 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                             }
                           });
                           box.write(
-                              controller.selectedDataDate.value +
-                                  ArgumentConstant.Sanj,
+                              controller.DataDate.value +
+                                  timeConstant.Sanj,
                               jsonEncode(list.map((e) => e.toJson()).toList()));
                         } else {
                           List<Selected> list = await ((jsonDecode(box.read(
-                                          controller.selectedDataDate.value +
-                                              ArgumentConstant.Sanj))
+                                          controller.DataDate.value +
+                                              timeConstant.Sanj))
                                       as List<dynamic>)
                                   .toList())
                               .map((e) => Selected.fromJson(e))
                               .toList();
                           List<Selected> listSavar = await ((jsonDecode(box
-                                      .read(controller.selectedDataDate.value +
-                                          ArgumentConstant
+                                      .read(controller.DataDate.value +
+                                          timeConstant
                                               .savar)) as List<dynamic>)
                                   .toList())
                               .map((e) => Selected.fromJson(e))
@@ -322,12 +322,12 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                             }
                           });
                           box.write(
-                              controller.selectedDataDate.value +
-                                  ArgumentConstant.Sanj,
+                              controller.DataDate.value +
+                                  timeConstant.Sanj,
                               jsonEncode(list.map((e) => e.toJson()).toList()));
                           box.write(
-                              controller.selectedDataDate.value +
-                                  ArgumentConstant.savar,
+                              controller.DataDate.value +
+                                  timeConstant.savar,
                               jsonEncode(
                                   listSavar.map((e) => e.toJson()).toList()));
                         }

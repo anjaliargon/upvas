@@ -17,13 +17,13 @@ class AddUpvasController extends GetxController {
   RxList<Selected> getDataList = RxList<Selected>([]);
   RxList<String> list = RxList<String>([]);
   RxString dropdownValue = "1".obs;
-  RxString selectedDataDate = "".obs;
+  RxString DataDate = "".obs;
 
   @override
   void onInit() {
     selectedDate.value =
         DateFormat('dd MMM, yyyy').format(DateTime.now()).toString();
-    selectedDataDate.value =
+    DataDate.value =
         DateFormat('dd/MM/yyyy').format(DateTime.now()).toString();
     data();
     super.onInit();
@@ -37,15 +37,15 @@ class AddUpvasController extends GetxController {
     if (getSelectedText() == "Full") {
       RxList<Selected> getDataListSavar = RxList<Selected>([]);
       RxList<Selected> getDataListSanj = RxList<Selected>([]);
-      if (!isNullEmptyOrFalse(box.read(selectedDataDate.value + "Savar"))) {
-        getDataListSavar.value = ((jsonDecode(box.read(selectedDataDate.value + "Savar"))
+      if (!isNullEmptyOrFalse(box.read(DataDate.value + "Savar"))) {
+        getDataListSavar.value = ((jsonDecode(box.read(DataDate.value + "Savar"))
                         as List<dynamic>)
                     .toList())
                 .map((e) => Selected.fromJson(e))
                 .toList();
       } else {
         box.write(
-            selectedDataDate.value + "Savar",
+            DataDate.value + "Savar",
             jsonEncode(RxList<Selected>([
               Selected(isSelected: false.obs, name: "1".obs),
               Selected(isSelected: false.obs, name: "2".obs),
@@ -259,16 +259,16 @@ class AddUpvasController extends GetxController {
           Selected(isSelected: false.obs, name: "SE8".obs),
         ]);
       }
-      if (!isNullEmptyOrFalse(box.read(selectedDataDate.value + "Sanj"))) {
+      if (!isNullEmptyOrFalse(box.read(DataDate.value + "Sanj"))) {
         getDataListSanj.value =
-            ((jsonDecode(box.read(selectedDataDate.value + "Sanj"))
+            ((jsonDecode(box.read(DataDate.value + "Sanj"))
                         as List<dynamic>)
                     .toList())
                 .map((e) => Selected.fromJson(e))
                 .toList();
       } else {
         box.write(
-            selectedDataDate.value + "Sanj",
+            DataDate.value + "Sanj",
             jsonEncode(RxList<Selected>([
               Selected(isSelected: false.obs, name: "1".obs),
               Selected(isSelected: false.obs, name: "2".obs),
@@ -490,9 +490,9 @@ class AddUpvasController extends GetxController {
       }
     } else {
       if (!isNullEmptyOrFalse(
-          box.read(selectedDataDate.value + getSelectedText()))) {
+          box.read(DataDate.value + getSelectedText()))) {
         getDataList.value =
-            ((jsonDecode(box.read(selectedDataDate.value + getSelectedText()))
+            ((jsonDecode(box.read(DataDate.value + getSelectedText()))
                         as List<dynamic>)
                     .toList())
                 .map((e) => Selected.fromJson(e))
@@ -506,7 +506,7 @@ class AddUpvasController extends GetxController {
           }
         }
       } else {
-        box.write(selectedDataDate.value + getSelectedText(),
+        box.write(DataDate.value + getSelectedText(),
             jsonEncode(RxList<Selected>([
               Selected(isSelected: false.obs, name: "1".obs),
               Selected(isSelected: false.obs, name: "2".obs),
@@ -738,7 +738,7 @@ class AddUpvasController extends GetxController {
     if (pickedDate != null) {
       print(pickedDate);
       selectedDate.value = DateFormat('dd/MM/yyyy').format(pickedDate);
-      selectedDataDate.value = DateFormat('dd/MM/yyyy').format(pickedDate);
+      DataDate.value = DateFormat('dd/MM/yyyy').format(pickedDate);
       data();
     } else {}
   }
