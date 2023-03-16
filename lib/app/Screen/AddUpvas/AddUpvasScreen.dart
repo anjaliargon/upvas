@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutterotp_firebase/app/Constant/Colors.dart';
+import 'package:flutterotp_firebase/app/Constant/app_constant.dart';
 import 'package:flutterotp_firebase/app/Screen/AddUpvas/AppUpvasController.dart';
 import 'package:flutterotp_firebase/app/Screen/Home/controller/Homecontroller.dart';
 import 'package:flutterotp_firebase/app/routes/app_pages.dart';
@@ -16,7 +17,6 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
 
   @override
   Widget build(BuildContext context) {
-
     MyColor colors = MyColor();
     return Scaffold(
       appBar: AppBar(
@@ -59,8 +59,10 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                               Text("Number",
-                                  style: TextStyle(fontSize: 12.sp,)),
+                              Text("Number",
+                                  style: TextStyle(
+                                    fontSize: 12.sp,
+                                  )),
                               const SizedBox(
                                 height: 12,
                               ),
@@ -68,15 +70,15 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                 height: 6.h,
                                 width: 32.w,
                                 decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: colors.grey),
+                                    border: Border.all(color: colors.grey),
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(12))),
                                 child: Padding(
                                   padding: const EdgeInsets.only(
                                       right: 10.0, left: 10),
                                   child: DropdownButton<String>(
-                                    value: controller.dropdownValue.value.toString(),
+                                    value: controller.dropdownValue.value
+                                        .toString(),
                                     elevation: 16,
                                     style: TextStyle(
                                         color: colors.black,
@@ -98,7 +100,8 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                     onChanged: (String? value) {
                                       controller.dropdownValue.value = value!;
                                     },
-                                    items: controller.list.map<DropdownMenuItem<String>>((value) {
+                                    items: controller.list
+                                        .map<DropdownMenuItem<String>>((value) {
                                       return DropdownMenuItem<String>(
                                         value: value.toString(),
                                         child: Text((value).toString()),
@@ -113,8 +116,7 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                               Text("Date",
-                                  style: TextStyle(fontSize: 12.sp)),
+                              Text("Date", style: TextStyle(fontSize: 12.sp)),
                               const SizedBox(
                                 height: 12,
                               ),
@@ -122,8 +124,7 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                 height: 6.h,
                                 width: 32.w,
                                 decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: colors.grey),
+                                    border: Border.all(color: colors.grey),
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(12))),
                                 child: Padding(
@@ -162,7 +163,10 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                           Text("Time",style: TextStyle(fontSize: 12.sp),),
+                          Text(
+                            "Time",
+                            style: TextStyle(fontSize: 12.sp),
+                          ),
                           const SizedBox(
                             height: 20,
                           ),
@@ -251,40 +255,81 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                     const SizedBox(height: 80),
                     InkWell(
                       onTap: () async {
-                        if (controller.getSelectedText() == "Savar") {
-                          List<Selected> list = await ((jsonDecode(box.read("${controller.selectedDataDate.value}Savar"))
-                                      as List<dynamic>)
+                        if (controller.getSelectedText() ==
+                            ArgumentConstant.savar) {
+                          List<Selected> list = await ((jsonDecode(box
+                                      .read(controller.selectedDataDate.value +
+                                          ArgumentConstant
+                                              .savar)) as List<dynamic>)
                                   .toList())
                               .map((e) => Selected.fromJson(e))
                               .toList();
-                          list[int.parse(controller.dropdownValue.value)].isSelected.value = true;
-                          box.write("${controller.selectedDataDate.value}Savar",
+                          list.forEach((element) {
+                            if (element.name.value ==
+                                controller.dropdownValue.value) {
+                              element.isSelected.value = true;
+                            }
+                          });
+
+                          box.write(
+                              controller.selectedDataDate.value +
+                                  ArgumentConstant.savar,
                               jsonEncode(list.map((e) => e.toJson()).toList()));
-                        } else if (controller.getSelectedText() == "Sanj") {
+                        } else if (controller.getSelectedText() ==
+                            ArgumentConstant.Sanj) {
                           List<Selected> list = await ((jsonDecode(box.read(
-                                          "${controller.selectedDataDate.value}Sanj"))
+                                          controller.selectedDataDate.value +
+                                              ArgumentConstant.Sanj))
                                       as List<dynamic>)
                                   .toList())
                               .map((e) => Selected.fromJson(e))
                               .toList();
-                          list[int.parse(controller.dropdownValue.value.tr)].isSelected.value = true;
-                          print(controller.dropdownValue);
-                          box.write("${controller.selectedDataDate.value}Sanj",jsonEncode(list.map((e) => e.toJson()).toList()));
+                          list.forEach((element) {
+                            if (element.name.value ==
+                                controller.dropdownValue.value) {
+                              element.isSelected.value = true;
+                            }
+                          });
+                          box.write(
+                              controller.selectedDataDate.value +
+                                  ArgumentConstant.Sanj,
+                              jsonEncode(list.map((e) => e.toJson()).toList()));
                         } else {
-                          List<Selected> list = await ((jsonDecode(box.read("${controller.selectedDataDate.value}Sanj"))
+                          List<Selected> list = await ((jsonDecode(box.read(
+                                          controller.selectedDataDate.value +
+                                              ArgumentConstant.Sanj))
                                       as List<dynamic>)
                                   .toList())
                               .map((e) => Selected.fromJson(e))
                               .toList();
-                          List<Selected> listSavar = await ((jsonDecode(box.read("${controller.selectedDataDate.value}Savar"))
-                                      as List<dynamic>)
+                          List<Selected> listSavar = await ((jsonDecode(box
+                                      .read(controller.selectedDataDate.value +
+                                          ArgumentConstant
+                                              .savar)) as List<dynamic>)
                                   .toList())
                               .map((e) => Selected.fromJson(e))
                               .toList();
-                          list[int.parse(controller.dropdownValue.value)].isSelected.value = true;
-                          listSavar[int.parse(controller.dropdownValue.value)].isSelected.value = true;
-                          box.write("${controller.selectedDataDate.value}Sanj", jsonEncode(list.map((e) => e.toJson()).toList()));
-                          box.write("${controller.selectedDataDate.value}Savar", jsonEncode(listSavar.map((e) => e.toJson()).toList()));
+                          list.forEach((element) {
+                            if (element.name.value ==
+                                controller.dropdownValue.value) {
+                              element.isSelected.value = true;
+                            }
+                          });
+                          listSavar.forEach((element) {
+                            if (element.name.value ==
+                                controller.dropdownValue.value) {
+                              element.isSelected.value = true;
+                            }
+                          });
+                          box.write(
+                              controller.selectedDataDate.value +
+                                  ArgumentConstant.Sanj,
+                              jsonEncode(list.map((e) => e.toJson()).toList()));
+                          box.write(
+                              controller.selectedDataDate.value +
+                                  ArgumentConstant.savar,
+                              jsonEncode(
+                                  listSavar.map((e) => e.toJson()).toList()));
                         }
                         Get.offAllNamed(Routes.MAINHOME);
                       },
@@ -295,10 +340,13 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                 const BorderRadius.all(Radius.circular(12))),
                         height: 50,
                         width: 140,
-                        child:  Center(
+                        child: Center(
                           child: Text(
                             "Save",
-                            style: TextStyle(color: Colors.white, fontSize: 12.sp,fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
