@@ -38,8 +38,7 @@ class AddUpvasController extends GetxController {
       RxList<Selected> getDataListSavar = RxList<Selected>([]);
       RxList<Selected> getDataListSanj = RxList<Selected>([]);
       if (!isNullEmptyOrFalse(box.read(selectedDataDate.value + "Savar"))) {
-        getDataListSavar.value =
-            ((jsonDecode(box.read(selectedDataDate.value + "Savar"))
+        getDataListSavar.value = ((jsonDecode(box.read(selectedDataDate.value + "Savar"))
                         as List<dynamic>)
                     .toList())
                 .map((e) => Selected.fromJson(e))
@@ -614,10 +613,11 @@ class AddUpvasController extends GetxController {
               Selected(isSelected: false.obs, name: "SE6".obs),
               Selected(isSelected: false.obs, name: "SE7".obs),
               Selected(isSelected: false.obs, name: "SE8".obs),
-            ]).map((e) => e.toJson()).toList()));
+            ]).map((e) => e.name.value).toList()));
         list.clear();
 
         list.addAll([
+
           Selected(isSelected: false.obs, name: "1".obs),
           Selected(isSelected: false.obs, name: "2".obs),
           Selected(isSelected: false.obs, name: "3".obs),
