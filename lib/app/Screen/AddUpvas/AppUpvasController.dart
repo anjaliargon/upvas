@@ -506,8 +506,7 @@ class AddUpvasController extends GetxController {
           }
         }
       } else {
-        box.write(
-            selectedDataDate.value + getSelectedText(),
+        box.write(selectedDataDate.value + getSelectedText(),
             jsonEncode(RxList<Selected>([
               Selected(isSelected: false.obs, name: "1".obs),
               Selected(isSelected: false.obs, name: "2".obs),

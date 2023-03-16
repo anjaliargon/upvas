@@ -252,8 +252,7 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                     InkWell(
                       onTap: () async {
                         if (controller.getSelectedText() == "Savar") {
-                          List<Selected> list = await ((jsonDecode(box.read(
-                                          "${controller.selectedDataDate.value}Savar"))
+                          List<Selected> list = await ((jsonDecode(box.read("${controller.selectedDataDate.value}Savar"))
                                       as List<dynamic>)
                                   .toList())
                               .map((e) => Selected.fromJson(e))
@@ -268,35 +267,24 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                   .toList())
                               .map((e) => Selected.fromJson(e))
                               .toList();
-                          list[int.parse(controller.dropdownValue.value)].isSelected
-                              .value = true;
-                          box.write("${controller.selectedDataDate.value}Sanj",
-                              jsonEncode(list.map((e) => e.toJson()).toList()));
+                          list[int.parse(controller.dropdownValue.value.tr)].isSelected.value = true;
+                          print(controller.dropdownValue);
+                          box.write("${controller.selectedDataDate.value}Sanj",jsonEncode(list.map((e) => e.toJson()).toList()));
                         } else {
-                          List<Selected> list = await ((jsonDecode(box.read(
-                                          "${controller.selectedDataDate.value}Sanj"))
+                          List<Selected> list = await ((jsonDecode(box.read("${controller.selectedDataDate.value}Sanj"))
                                       as List<dynamic>)
                                   .toList())
                               .map((e) => Selected.fromJson(e))
                               .toList();
-                          List<Selected> listSavar = await ((jsonDecode(box.read(
-                                          "${controller.selectedDataDate.value}Savar"))
+                          List<Selected> listSavar = await ((jsonDecode(box.read("${controller.selectedDataDate.value}Savar"))
                                       as List<dynamic>)
                                   .toList())
                               .map((e) => Selected.fromJson(e))
                               .toList();
-                          list[int.parse(controller.dropdownValue.value)]
-                              .isSelected
-                              .value = true;
-                          listSavar[int.parse(controller.dropdownValue.value)]
-                              .isSelected
-                              .value = true;
-                          box.write("${controller.selectedDataDate.value}Sanj",
-                              jsonEncode(list.map((e) => e.toJson()).toList()));
-                          box.write(
-                              "${controller.selectedDataDate.value}Savar",
-                              jsonEncode(
-                                  listSavar.map((e) => e.toJson()).toList()));
+                          list[int.parse(controller.dropdownValue.value)].isSelected.value = true;
+                          listSavar[int.parse(controller.dropdownValue.value)].isSelected.value = true;
+                          box.write("${controller.selectedDataDate.value}Sanj", jsonEncode(list.map((e) => e.toJson()).toList()));
+                          box.write("${controller.selectedDataDate.value}Savar", jsonEncode(listSavar.map((e) => e.toJson()).toList()));
                         }
                         Get.offAllNamed(Routes.MAINHOME);
                       },
