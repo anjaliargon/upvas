@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterotp_firebase/app/Constant/Colors.dart';
+import 'package:flutterotp_firebase/app/Constant/app_constant.dart';
 import 'package:flutterotp_firebase/app/Screen/Dashboard/controller/DashboardController.dart';
 import 'package:flutterotp_firebase/app/Screen/Home/homescreen.dart';
 import 'package:get/get.dart';
@@ -79,7 +80,7 @@ class Dashboard extends GetWidget<DashboardController> {
                         ),
                          Padding(
                           padding: const EdgeInsets.only(bottom: 3, left: 5),
-                          child: Text("Upavas List",
+                          child: Text(timeConstant.upvaslist,
                               style: TextStyle(
                                   fontWeight: FontWeight.w600, fontSize: 14.sp)),
                         )

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutterotp_firebase/app/Constant/app_constant.dart';
 import 'package:flutterotp_firebase/app/Constant/sizeConstant.dart';
 import 'package:flutterotp_firebase/app/Screen/Home/controller/Homecontroller.dart';
 import 'package:get/get.dart';
@@ -10,10 +11,10 @@ import '../../../../main.dart';
 class UpavaslistController extends GetxController {
   RxString selectedDate = "".obs;
   RxList<String> dropdown = <String>[
-    'Savar',
-    'Sanj',
+    (timeConstant.savar),
+    (timeConstant.Sanj),
   ].obs;
-  RxString dropdownValue = "Savar".obs;
+  RxString dropdownValue = timeConstant.savar.obs;
   RxList<Selected> getDataList = RxList<Selected>([]);
   RxList dataList = RxList([]);
   RxBool hasData = false.obs;

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutterotp_firebase/app/Constant/app_constant.dart';
 
 import 'package:flutterotp_firebase/app/Constant/sizeConstant.dart';
 
@@ -120,11 +121,11 @@ class HomeController extends GetxController {
   ]);
   RxList<Selected> getDataList = RxList<Selected>([]);
   RxList<String> dropdownList = <String>[
-    'Savar',
-    'Sanj',
+    timeConstant.savar,
+    timeConstant.Sanj,
   ].obs;
   RxBool hasData = false.obs;
-  RxString dropdown = "Savar".obs;
+  RxString dropdown = timeConstant.savar.obs;
 
   @override
   void onInit() {

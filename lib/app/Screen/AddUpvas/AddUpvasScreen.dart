@@ -57,7 +57,7 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                   style: TextStyle(
                                     fontSize: 12.sp,
                                   )),
-                               SizedBox(
+                              SizedBox(
                                 height: 1.h,
                               ),
                               Container(
@@ -111,7 +111,7 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text("Date", style: TextStyle(fontSize: 12.sp)),
-                               SizedBox(
+                              SizedBox(
                                 height: 1.h,
                               ),
                               Container(
@@ -135,15 +135,18 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                           CrossAxisAlignment.center,
                                       children: [
                                         Padding(
-                                          padding: const EdgeInsets.only(left: 2),
-                                          child: Text(controller.selectedDate.value,
+                                          padding:
+                                              const EdgeInsets.only(left: 2),
+                                          child: Text(
+                                              controller.selectedDate.value,
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   color: colors.black)),
                                         ),
                                         const SizedBox(width: 3),
                                         Padding(
-                                          padding: const EdgeInsets.only(right: 2),
+                                          padding:
+                                              const EdgeInsets.only(right: 2),
                                           child: Image.asset(
                                               "assets/icons_image/date.png",
                                               height: 3.h),
@@ -191,7 +194,7 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                     SizedBox(
                                       width: 3.w,
                                     ),
-                                    const Text("Savar"),
+                                    Text(timeConstant.savar),
                                   ],
                                 ),
                               ),
@@ -214,15 +217,15 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                         : Image.asset(
                                             "assets/icons_image/Box.png",
                                             height: 3.h),
-                                     SizedBox(
+                                    SizedBox(
                                       width: 3.w,
                                     ),
-                                    const Text("Sanj"),
+                                    Text(timeConstant.Sanj),
                                   ],
                                 ),
                               ),
-                               SizedBox(
-                                width:5.w,
+                              SizedBox(
+                                width: 5.w,
                               ),
                               InkWell(
                                 onTap: () {
@@ -240,10 +243,10 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                         : Image.asset(
                                             "assets/icons_image/Box.png",
                                             height: 3.h),
-                                     SizedBox(
+                                    SizedBox(
                                       width: 3.w,
                                     ),
-                                    const Text("Full Day"),
+                                    Text(timeConstant.full),
                                   ],
                                 ),
                               ),
@@ -252,7 +255,7 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                         ],
                       ),
                     ),
-                     SizedBox(height: 10.h),
+                    SizedBox(height: 10.h),
                     InkWell(
                       onTap: () async {
                         if (controller.getSelectedText() ==

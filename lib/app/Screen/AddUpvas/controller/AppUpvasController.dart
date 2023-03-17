@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutterotp_firebase/app/Constant/app_constant.dart';
 import 'package:flutterotp_firebase/app/Constant/sizeConstant.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -32,20 +33,21 @@ class AddUpvasController extends GetxController {
   data({String text = "savar"}) async {
     hasData.value = false;
     list.clear();
-    await Future.delayed(const Duration(milliseconds: 50));
-
-    if (getSelectedText() == "Full") {
+    await Future.delayed(Duration(milliseconds: 50));
+    if (getSelectedText() == timeConstant.full) {
       RxList<Selected> getDataListSavar = RxList<Selected>([]);
       RxList<Selected> getDataListSanj = RxList<Selected>([]);
-      if (!isNullEmptyOrFalse(box.read(DataDate.value + "Savar"))) {
-        getDataListSavar.value = ((jsonDecode(box.read(DataDate.value + "Savar"))
-                        as List<dynamic>)
-                    .toList())
-                .map((e) => Selected.fromJson(e))
-                .toList();
+      if (!isNullEmptyOrFalse(
+          box.read(DataDate.value + timeConstant.savar))) {
+        getDataListSavar.value = ((jsonDecode(box
+            .read(DataDate.value + timeConstant.savar))
+        as List<dynamic>)
+            .toList())
+            .map((e) => Selected.fromJson(e))
+            .toList();
       } else {
         box.write(
-            DataDate.value + "Savar",
+            DataDate.value + timeConstant.savar,
             jsonEncode(RxList<Selected>([
               Selected(isSelected: false.obs, name: "1".obs),
               Selected(isSelected: false.obs, name: "2".obs),
@@ -261,16 +263,17 @@ class AddUpvasController extends GetxController {
           Selected(isSelected: false.obs, name: "SE8".obs),
         ]);
       }
-      if (!isNullEmptyOrFalse(box.read(DataDate.value + "Sanj"))) {
-        getDataListSanj.value =
-            ((jsonDecode(box.read(DataDate.value + "Sanj"))
-                        as List<dynamic>)
-                    .toList())
-                .map((e) => Selected.fromJson(e))
-                .toList();
+      if (!isNullEmptyOrFalse(
+          box.read(DataDate.value + timeConstant.Sanj))) {
+        getDataListSanj.value = ((jsonDecode(box
+            .read(DataDate.value + timeConstant.Sanj))
+        as List<dynamic>)
+            .toList())
+            .map((e) => Selected.fromJson(e))
+            .toList();
       } else {
         box.write(
-            DataDate.value + "Sanj",
+            DataDate.value + timeConstant.Sanj,
             jsonEncode(RxList<Selected>([
               Selected(isSelected: false.obs, name: "1".obs),
               Selected(isSelected: false.obs, name: "2".obs),
@@ -489,7 +492,7 @@ class AddUpvasController extends GetxController {
       for (int i = 0; i < getDataListSanj.length; i++) {
         if (getDataListSanj[i].isSelected.isFalse &&
             getDataListSavar[i].isSelected.isFalse) {
-          list.add(getDataList[i].name.value);
+          list.add(getDataListSanj[i].name.value);
         }
       }
     } else {
@@ -497,8 +500,8 @@ class AddUpvasController extends GetxController {
           box.read(DataDate.value + getSelectedText()))) {
         getDataList.value =
             ((jsonDecode(box.read(DataDate.value + getSelectedText()))
-                        as List<dynamic>)
-                    .toList())
+            as List<dynamic>)
+                .toList())
                 .map((e) => Selected.fromJson(e))
                 .toList();
 
@@ -510,7 +513,8 @@ class AddUpvasController extends GetxController {
           }
         }
       } else {
-        box.write(DataDate.value + getSelectedText(),
+        box.write(
+            DataDate.value + getSelectedText(),
             jsonEncode(RxList<Selected>([
               Selected(isSelected: false.obs, name: "1".obs),
               Selected(isSelected: false.obs, name: "2".obs),
@@ -617,11 +621,10 @@ class AddUpvasController extends GetxController {
               Selected(isSelected: false.obs, name: "SE6".obs),
               Selected(isSelected: false.obs, name: "SE7".obs),
               Selected(isSelected: false.obs, name: "SE8".obs),
-            ]).map((e) => e.name.value).toList()));
+            ]).map((e) => e.toJson()).toList()));
         list.clear();
 
         list.addAll([
-
           Selected(isSelected: false.obs, name: "1".obs),
           Selected(isSelected: false.obs, name: "2".obs),
           Selected(isSelected: false.obs, name: "3".obs),
@@ -751,13 +754,13 @@ class AddUpvasController extends GetxController {
 
   getSelectedText() {
     if (isFullDaySelected.isTrue) {
-      return "Full";
+      return timeConstant.full;
     } else if (isSavarSelected.isTrue) {
-      return "Savar";
+      return timeConstant.savar;
     } else if (isSanjSelected.isTrue) {
-      return "Sanj";
+      return timeConstant.Sanj;
     }
-    return "Savar";
+    return timeConstant.savar;
   }
 
   @override
