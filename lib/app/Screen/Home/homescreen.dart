@@ -58,8 +58,6 @@ class Homescreen extends GetView<HomeController> {
                                         color: colors.black,
                                         fontWeight: FontWeight.bold),
                                   ),
-
-                                  // Text("03-13-2023",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500,color: colors.offgrey),),,
                                   Image(
                                     image: const AssetImage(
                                         'assets/icons_image/date.png'),
@@ -149,7 +147,7 @@ class Homescreen extends GetView<HomeController> {
                                 child: Text(
                                   homeController.selectedList
                                       .where((element) {
-                                        return element.isSelected.isFalse;
+                                        return element.isSelected.isTrue;
                                       })
                                       .toList()
                                       .length
@@ -181,8 +179,7 @@ class Homescreen extends GetView<HomeController> {
                               itemBuilder: (BuildContext context, int index) =>
                                   InkWell(
                                 onTap: () {
-                                  homeController.selectedList[index].isSelected
-                                      .toggle();
+                                  homeController.selectedList[index].isSelected.toggle();
                                   box.write(
                                       homeController.selectedDate.value +
                                           homeController.dropdown.value,
@@ -192,24 +189,25 @@ class Homescreen extends GetView<HomeController> {
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    color: (homeController.selectedList[index]
-                                            .isSelected.isFalse)
-                                        ? colors.green
-                                        : colors.lightgrey,
+                                    color: (homeController.selectedList[index].isSelected.isFalse)
+                                        ? colors.lightgrey
+                                        : (homeController.selectedList[index]
+                                                .isSelected.isFalse)
+                                            ? colors.green
+                                            : Colors.red,
                                     shape: BoxShape.circle,
                                   ),
                                   margin: const EdgeInsets.all(5),
                                   child: Center(
                                     child: Text(
-                                      homeController
-                                          .selectedList[index].name.value,
+                                      homeController.selectedList[index].name.value,
                                       style: TextStyle(
                                         color: (homeController
                                                 .selectedList[index]
                                                 .isSelected
                                                 .isFalse)
-                                            ? colors.white
-                                            : colors.darkgrey,
+                                            ? colors.darkgrey
+                                            : colors.white,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20.sp,
                                       ),
@@ -241,10 +239,6 @@ class Homescreen extends GetView<HomeController> {
                                   homeController
                                       .selectedList[index + 65].isSelected
                                       .toggle();
-                                  // homeController.selectedList.listen((value) {
-                                  //   homeController.selectedList[index] =
-                                  //       value as Selected;
-                                  // });
                                   box.write(
                                       homeController.selectedDate.value +
                                           homeController.dropdown.value,
@@ -258,8 +252,8 @@ class Homescreen extends GetView<HomeController> {
                                             .selectedList[index + 65]
                                             .isSelected
                                             .isFalse)
-                                        ? colors.green
-                                        : colors.lightgrey,
+                                        ? colors.lightgrey
+                                        : colors.green,
                                     shape: BoxShape.circle,
                                   ),
                                   margin: const EdgeInsets.all(5),
@@ -272,8 +266,8 @@ class Homescreen extends GetView<HomeController> {
                                                 .selectedList[index + 65]
                                                 .isSelected
                                                 .isFalse)
-                                            ? colors.white
-                                            : colors.darkgrey,
+                                            ? colors.darkgrey
+                                            : colors.white,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15.sp,
                                       ),
@@ -322,8 +316,8 @@ class Homescreen extends GetView<HomeController> {
                                             .selectedList[index + 75]
                                             .isSelected
                                             .isFalse)
-                                        ? colors.green
-                                        : colors.lightgrey,
+                                        ? colors.lightgrey
+                                        : colors.green,
                                     shape: BoxShape.circle,
                                   ),
                                   margin: const EdgeInsets.all(5),
@@ -336,8 +330,8 @@ class Homescreen extends GetView<HomeController> {
                                                 .selectedList[index + 75]
                                                 .isSelected
                                                 .isFalse)
-                                            ? colors.white
-                                            : colors.darkgrey,
+                                            ? colors.darkgrey
+                                            : colors.white,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15.sp,
                                       ),
@@ -386,8 +380,8 @@ class Homescreen extends GetView<HomeController> {
                                             .selectedList[index + 92]
                                             .isSelected
                                             .isFalse)
-                                        ? colors.green
-                                        : colors.lightgrey,
+                                        ? colors.lightgrey
+                                        : colors.green,
                                     shape: BoxShape.circle,
                                   ),
                                   margin: const EdgeInsets.all(5),
@@ -400,8 +394,8 @@ class Homescreen extends GetView<HomeController> {
                                                 .selectedList[index + 92]
                                                 .isSelected
                                                 .isFalse)
-                                            ? colors.white
-                                            : colors.darkgrey,
+                                            ? colors.darkgrey
+                                            : colors.white,
                                         //  color: item[index] ? Colors.white : Colors.black,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15.sp,
@@ -447,8 +441,8 @@ class Homescreen extends GetView<HomeController> {
                                             .selectedList[index + 97]
                                             .isSelected
                                             .isFalse)
-                                        ? colors.green
-                                        : colors.lightgrey,
+                                        ? colors.lightgrey
+                                        : colors.green,
                                     shape: BoxShape.circle,
                                   ),
                                   margin: const EdgeInsets.all(5),
@@ -461,8 +455,8 @@ class Homescreen extends GetView<HomeController> {
                                                 .selectedList[index + 97]
                                                 .isSelected
                                                 .isFalse)
-                                            ? colors.white
-                                            : colors.darkgrey,
+                                            ? colors.darkgrey
+                                            : colors.white,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 15.sp,
                                       ),

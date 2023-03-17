@@ -6,7 +6,6 @@ import 'package:flutterotp_firebase/app/Constant/app_constant.dart';
 import 'package:flutterotp_firebase/app/Constant/sizeConstant.dart';
 
 import 'package:flutterotp_firebase/main.dart';
-
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -126,6 +125,7 @@ class HomeController extends GetxController {
   ].obs;
   RxBool hasData = false.obs;
   RxString dropdown = timeConstant.savar.obs;
+  final  color = [Colors.grey,Colors.green,Colors.red];
 
   @override
   void onInit() {
@@ -141,7 +141,6 @@ class HomeController extends GetxController {
   void onReady() {
     super.onReady();
   }
-
   data() async {
     hasData.value = false;
     getDataList.clear();

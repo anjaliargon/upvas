@@ -146,7 +146,7 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                         CircleAvatar(
                                             radius: 5,
                                             backgroundColor:
-                                                colors.offgrey),
+                                                colors.green),
                                         const SizedBox(
                                           width: 5,
                                         ),
@@ -192,7 +192,7 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                                 return Container(
                                                     decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
-                                                        color: colors.lightgrey),
+                                                        color: colors.green),
                                                     margin: const EdgeInsets.all(5),
                                                     child: Center(
                                                         child: Text(
@@ -200,7 +200,7 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                                           .dataList[index]
                                                           .toString()),
                                                       style: TextStyle(
-                                                          color: colors.darkgrey,
+                                                          color: colors.white,
                                                           fontSize: 20.sp),
                                                     )));
                                               });

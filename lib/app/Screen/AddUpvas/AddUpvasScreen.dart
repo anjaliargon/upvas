@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutterotp_firebase/app/Constant/Colors.dart';
 import 'package:flutterotp_firebase/app/Constant/app_constant.dart';
+import 'package:flutterotp_firebase/app/Constant/sizeConstant.dart';
 import 'package:flutterotp_firebase/app/Screen/AddUpvas/controller/AppUpvasController.dart';
 import 'package:flutterotp_firebase/app/Screen/Home/controller/Homecontroller.dart';
 import 'package:flutterotp_firebase/app/routes/app_pages.dart';
@@ -31,7 +32,8 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
               height: 7.h,
               width: 7.w,
             )),
-        title: Text('Add Upvas', style: TextStyle(color: colors.black)),
+        title:
+            Text(timeConstant.addupvas, style: TextStyle(color: colors.black)),
         centerTitle: true,
       ),
       body: Obx(() {

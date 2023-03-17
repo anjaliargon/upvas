@@ -24,8 +24,7 @@ class AddUpvasController extends GetxController {
   void onInit() {
     selectedDate.value =
         DateFormat('dd MMM, yyyy').format(DateTime.now()).toString();
-    DataDate.value =
-        DateFormat('dd/MM/yyyy').format(DateTime.now()).toString();
+    DataDate.value = DateFormat('dd/MM/yyyy').format(DateTime.now()).toString();
     data();
     super.onInit();
   }
@@ -37,14 +36,13 @@ class AddUpvasController extends GetxController {
     if (getSelectedText() == timeConstant.full) {
       RxList<Selected> getDataListSavar = RxList<Selected>([]);
       RxList<Selected> getDataListSanj = RxList<Selected>([]);
-      if (!isNullEmptyOrFalse(
-          box.read(DataDate.value + timeConstant.savar))) {
-        getDataListSavar.value = ((jsonDecode(box
-            .read(DataDate.value + timeConstant.savar))
-        as List<dynamic>)
-            .toList())
-            .map((e) => Selected.fromJson(e))
-            .toList();
+      if (!isNullEmptyOrFalse(box.read(DataDate.value + timeConstant.savar))) {
+        getDataListSavar.value =
+            ((jsonDecode(box.read(DataDate.value + timeConstant.savar))
+                        as List<dynamic>)
+                    .toList())
+                .map((e) => Selected.fromJson(e))
+                .toList();
       } else {
         box.write(
             DataDate.value + timeConstant.savar,
@@ -263,14 +261,13 @@ class AddUpvasController extends GetxController {
           Selected(isSelected: false.obs, name: "SE8".obs),
         ]);
       }
-      if (!isNullEmptyOrFalse(
-          box.read(DataDate.value + timeConstant.Sanj))) {
-        getDataListSanj.value = ((jsonDecode(box
-            .read(DataDate.value + timeConstant.Sanj))
-        as List<dynamic>)
-            .toList())
-            .map((e) => Selected.fromJson(e))
-            .toList();
+      if (!isNullEmptyOrFalse(box.read(DataDate.value + timeConstant.Sanj))) {
+        getDataListSanj.value =
+            ((jsonDecode(box.read(DataDate.value + timeConstant.Sanj))
+                        as List<dynamic>)
+                    .toList())
+                .map((e) => Selected.fromJson(e))
+                .toList();
       } else {
         box.write(
             DataDate.value + timeConstant.Sanj,
@@ -496,12 +493,11 @@ class AddUpvasController extends GetxController {
         }
       }
     } else {
-      if (!isNullEmptyOrFalse(
-          box.read(DataDate.value + getSelectedText()))) {
+      if (!isNullEmptyOrFalse(box.read(DataDate.value + getSelectedText()))) {
         getDataList.value =
             ((jsonDecode(box.read(DataDate.value + getSelectedText()))
-            as List<dynamic>)
-                .toList())
+                        as List<dynamic>)
+                    .toList())
                 .map((e) => Selected.fromJson(e))
                 .toList();
 
