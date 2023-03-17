@@ -194,7 +194,7 @@ class Homescreen extends GetView<HomeController> {
                                         : (homeController.selectedList[index]
                                                 .isSelected.isFalse)
                                             ? colors.green
-                                            : Colors.red,
+                                            : colors.red,
                                     shape: BoxShape.circle,
                                   ),
                                   margin: const EdgeInsets.all(5),
