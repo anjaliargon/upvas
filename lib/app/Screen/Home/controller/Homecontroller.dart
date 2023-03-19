@@ -125,7 +125,9 @@ class HomeController extends GetxController {
   ].obs;
   RxBool hasData = false.obs;
   RxString dropdown = timeConstant.savar.obs;
-  final  color = [Colors.grey,Colors.green,Colors.red];
+  var tappedIndex = -1.obs;
+  var containerColor = Colors.blue.obs;
+
 
   @override
   void onInit() {
