@@ -28,7 +28,7 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
               Get.back();
             },
             child: Image.asset(
-              "assets/icons_image/Back.png",
+              "assets/icons_image/back.png",
               height: 7.h,
               width: 7.w,
             )),
@@ -82,13 +82,9 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                                         fontWeight: FontWeight.bold),
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(12)),
-                                    icon: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 44.0, right: 0),
-                                      child: Image.asset(
-                                          "assets/icons_image/dropdown.png",
-                                          height: 25),
-                                    ),
+                                    icon: Image.asset(
+                                        "assets/icons_image/dropdown.png",
+                                        height: 5.h),
                                     underline: Container(
                                       // height: 2,
                                       color: colors.white,

@@ -9,4 +9,5 @@ class MyColor {
   Color darkgrey = const Color(0xffBBBCC6);
   Color lightgrey = const Color(0xffEAEAEC);
   Color grey = const Color(0xffa4a4a4);
+  Color red = Colors.red;
 }
