@@ -6,6 +6,7 @@ import 'package:flutterotp_firebase/app/Constant/app_constant.dart';
 import 'package:flutterotp_firebase/app/Constant/sizeConstant.dart';
 import 'package:flutterotp_firebase/app/Screen/AddUpvas/controller/AppUpvasController.dart';
 import 'package:flutterotp_firebase/app/Screen/Home/controller/Homecontroller.dart';
+import 'package:flutterotp_firebase/app/Screen/Home/controller/Selectedmodel.dart';
 import 'package:flutterotp_firebase/app/routes/app_pages.dart';
 
 import 'package:get/get.dart';
@@ -265,9 +266,9 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                               .map((e) => Selected.fromJson(e))
                               .toList();
                           list.forEach((element) {
-                            if (element.name.value ==
+                            if (element.name ==
                                 controller.dropdownValue.value) {
-                              element.isSelected.value = true;
+                              element.status.value = 0;
                             }
                           });
 
@@ -283,9 +284,10 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                               .map((e) => Selected.fromJson(e))
                               .toList();
                           list.forEach((element) {
-                            if (element.name.value ==
+                            if (element.name.toString() ==
                                 controller.dropdownValue.value) {
-                              element.isSelected.value = true;
+
+                              element.status.value = 0;
                             }
                           });
                           box.write(
@@ -305,15 +307,15 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                               .map((e) => Selected.fromJson(e))
                               .toList();
                           list.forEach((element) {
-                            if (element.name.value ==
+                            if (element.name.toString() ==
                                 controller.dropdownValue.value) {
-                              element.isSelected.value = true;
+                              element.status.value = 0;
                             }
                           });
                           listSavar.forEach((element) {
-                            if (element.name.value ==
+                            if (element.name.toString() ==
                                 controller.dropdownValue.value) {
-                              element.isSelected.value = true;
+                              element.status.value = 0;
                             }
                           });
                           box.write(

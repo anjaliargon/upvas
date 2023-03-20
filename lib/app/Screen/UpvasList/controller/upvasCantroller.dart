@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutterotp_firebase/app/Constant/app_constant.dart';
 import 'package:flutterotp_firebase/app/Constant/sizeConstant.dart';
-import 'package:flutterotp_firebase/app/Screen/Home/controller/Homecontroller.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../main.dart';
+import '../../Home/controller/Selectedmodel.dart';
 class UpavaslistController extends GetxController {
   RxString selectedDate = "".obs;
   RxList<String> dropdown = <String>[
@@ -44,8 +44,8 @@ class UpavaslistController extends GetxController {
     dataList.clear();
     if (!isNullEmptyOrFalse(getDataList)) {
       for (int i = 0; i < getDataList.length; i++) {
-        if (getDataList[i].isSelected.isTrue) {
-          dataList.add(getDataList[i].name.value);
+        if (getDataList[i].status.value == 2) {
+          dataList.add(getDataList[i].name.toString());
         }
       }
     }

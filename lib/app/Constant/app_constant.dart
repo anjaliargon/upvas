@@ -7,3 +7,4 @@ class timeConstant {
   static String addupvas = "ઉપવાસ ઉમેરો";
   static String upvaslist = "ઉપવાસ";
 }
+

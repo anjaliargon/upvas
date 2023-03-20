@@ -152,7 +152,7 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                         ),
                                         CircleAvatar(
                                             radius: 5,
-                                            backgroundColor: colors.green),
+                                            backgroundColor: colors.red),
                                         const SizedBox(
                                           width: 5,
                                         ),
@@ -160,7 +160,7 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                           controller.getDataList
                                               .where((element) {
                                                 return element
-                                                    .isSelected.isTrue;
+                                                    .status.value == 2;
                                               })
                                               .toList()
                                               .length
@@ -198,7 +198,7 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                                 return Container(
                                                     decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
-                                                        color: colors.green),
+                                                        color: colors.red),
                                                     margin:
                                                         const EdgeInsets.all(5),
                                                     child: Center(
