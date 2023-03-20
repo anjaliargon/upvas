@@ -18,7 +18,7 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
         builder: (controller) {
           return Obx(() {
             return Scaffold(
-              backgroundColor: colors.white,
+                backgroundColor: colors.white,
                 body: (controller.hasData.isFalse)
                     ? const Center(
                         child: CircularProgressIndicator(),
@@ -29,11 +29,11 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                           Column(
                             children: [
                               SizedBox(
-                                height: 1.h
-                                ,
+                                height: 1.h,
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 15,right: 15),
+                                padding:
+                                    const EdgeInsets.only(left: 15, right: 15),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -44,11 +44,12 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                         height: 6.h,
                                         width: 40.w,
                                         decoration: BoxDecoration(
-                                          color: colors.white,
+                                            color: colors.white,
                                             border: Border.all(
                                                 width: 1, color: colors.grey),
-                                            borderRadius: const BorderRadius.all(
-                                                Radius.circular(10))),
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                                    Radius.circular(10))),
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: InkWell(
@@ -64,7 +65,9 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                                   controller.selectedDate.value,
                                                   style: TextStyle(
                                                       fontSize: 12.sp,
-                                                      color: colors.black,fontWeight: FontWeight.bold),
+                                                      color: colors.black,
+                                                      fontWeight:
+                                                          FontWeight.bold),
                                                 ),
                                                 const SizedBox(width: 10),
                                                 Image.asset(
@@ -80,7 +83,7 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                       height: 6.h,
                                       width: 40.w,
                                       decoration: BoxDecoration(
-                                        color: colors.white,
+                                          color: colors.white,
                                           border: Border.all(
                                               width: 1, color: colors.grey),
                                           borderRadius:
@@ -98,15 +101,15 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                               Radius.circular(12)),
                                           icon: Image.asset(
                                               "assets/icons_image/dropdown.png",
-                                              height: 5.h
-                                          ),
+                                              height: 5.h),
                                           underline: Container(
                                             // height: 2,
                                             color: colors.white,
                                           ),
                                           onChanged: (String? value) {
                                             // This is called when the user selects an item.
-                                            controller.dropdownValue.value = value!;
+                                            controller.dropdownValue.value =
+                                                value!;
                                             controller.data();
                                           },
                                           items: controller.dropdown
@@ -137,16 +140,19 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                     padding: const EdgeInsets.all(8.0),
                                     child: Row(
                                       children: [
-                                        SizedBox(height: 2.h,),
-                                         Text("Active :",
-                                            style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.bold)),
+                                        SizedBox(
+                                          height: 2.h,
+                                        ),
+                                        Text("Active :",
+                                            style: TextStyle(
+                                                fontSize: 15.sp,
+                                                fontWeight: FontWeight.bold)),
                                         const SizedBox(
                                           width: 5,
                                         ),
                                         CircleAvatar(
                                             radius: 5,
-                                            backgroundColor:
-                                                colors.red),
+                                            backgroundColor: colors.green),
                                         const SizedBox(
                                           width: 5,
                                         ),
@@ -158,10 +164,10 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                               })
                                               .toList()
                                               .length
-                                              .toString(),style: TextStyle(
-                                          fontSize: 15.sp,
-                                          fontWeight: FontWeight.bold
-                                        ),
+                                              .toString(),
+                                          style: TextStyle(
+                                              fontSize: 15.sp,
+                                              fontWeight: FontWeight.bold),
                                         ),
                                         const SizedBox(
                                           width: 10,
@@ -192,8 +198,9 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                                 return Container(
                                                     decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
-                                                        color: colors.red),
-                                                    margin: const EdgeInsets.all(5),
+                                                        color: colors.green),
+                                                    margin:
+                                                        const EdgeInsets.all(5),
                                                     child: Center(
                                                         child: Text(
                                                       (controller
@@ -248,7 +255,7 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                         const SizedBox(
                                           width: 8,
                                         ),
-                                         Text(
+                                        Text(
                                           "Add Upvas",
                                           style: TextStyle(
                                               color: colors.white,

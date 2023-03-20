@@ -179,21 +179,6 @@ class Homescreen extends GetView<HomeController> {
                               itemBuilder: (BuildContext context, int index) =>
                                   InkWell(
                                 onTap: () {
-                                  // if (homeController.containerColor.value ==
-                                  //     colors.lightgrey) {
-                                  //   homeController.containerColor.value =
-                                  //       Colors.green;
-                                  // } else if (homeController
-                                  //         .containerColor.value ==
-                                  //     Colors.green) {
-                                  //   homeController.containerColor.value =
-                                  //       Colors.red;
-                                  // } else {
-                                  //   homeController.containerColor.value =
-                                  //       Colors.grey;
-                                  // }
-                                  // homeController.tappedIndex = index;
-
                                   homeController.selectedList[index].isSelected.toggle();
                                   box.write(
                                       homeController.selectedDate.value +
@@ -202,36 +187,29 @@ class Homescreen extends GetView<HomeController> {
                                           .map((e) => e.toJson())
                                           .toList()));
                                 },
-                                child: Obx(
-                                  () => Container(
-                                    decoration: BoxDecoration(
-                                      // color: homeController.tappedIndex == index
-                                      //     ? homeController.containerColor.value
-                                          // : Colors.white,
-                                      color: (homeController.selectedList[index]
-                                              .isSelected.isFalse)
-                                          ? colors.lightgrey
-                                          : (homeController.selectedList[index]
-                                                  .isSelected.isFalse)
-                                              ? colors.green
-                                              : colors.red,
-                                      // shape: BoxShape.circle,
-                                    ),
-                                    margin: const EdgeInsets.all(5),
-                                    child: Center(
-                                      child: Text(
-                                        homeController
-                                            .selectedList[index].name.value,
-                                        style: TextStyle(
-                                          color: (homeController
-                                                  .selectedList[index]
-                                                  .isSelected
-                                                  .isFalse)
-                                              ? colors.darkgrey
-                                              : colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20.sp,
-                                        ),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: (homeController.selectedList[index].isSelected.isFalse)
+                                        ? colors.lightgrey
+                                        : (homeController.selectedList[index]
+                                                .isSelected.isFalse)
+                                            ? colors.green
+                                            : colors.red,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  margin: const EdgeInsets.all(5),
+                                  child: Center(
+                                    child: Text(
+                                      homeController.selectedList[index].name.value,
+                                      style: TextStyle(
+                                        color: (homeController
+                                                .selectedList[index]
+                                                .isSelected
+                                                .isFalse)
+                                            ? colors.darkgrey
+                                            : colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20.sp,
                                       ),
                                     ),
                                   ),
@@ -258,17 +236,8 @@ class Homescreen extends GetView<HomeController> {
                               itemBuilder: (BuildContext context, int index) =>
                                   InkWell(
                                 onTap: () {
-                                  if(homeController
-                                      .selectedList[index + 65].status == 0){
-                                    colors.green;
-                                  }else if(homeController
-                                      .selectedList[index + 65].status == 1){
-                                    colors.red;
-                                  }else{
-                                    colors.lightgrey;
-                                  }
                                   homeController
-                                      .selectedList[index + 65].status
+                                      .selectedList[index + 65].isSelected
                                       .toggle();
                                   box.write(
                                       homeController.selectedDate.value +
