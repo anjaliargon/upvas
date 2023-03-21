@@ -6,5 +6,6 @@ class timeConstant {
   static String full = "ઉપવાસ";
   static String addupvas = "ઉપવાસ ઉમેરો";
   static String upvaslist = "ઉપવાસ";
+  static String chooeslocation = "સ્થાન પસંદ કરો";
 }
 

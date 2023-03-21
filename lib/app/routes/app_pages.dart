@@ -2,6 +2,8 @@ import 'package:flutterotp_firebase/app/Screen/AddUpvas/controller/AddUpvasBindi
 import 'package:flutterotp_firebase/app/Screen/Dashboard/DashboardScreen.dart';
 import 'package:flutterotp_firebase/app/Screen/Dashboard/controller/Dashboardbinding.dart';
 import 'package:flutterotp_firebase/app/Screen/Home/homescreen.dart';
+import 'package:flutterotp_firebase/app/Screen/Location/Controller/Locationbinding.dart';
+import 'package:flutterotp_firebase/app/Screen/Location/LocationScreen.dart';
 import 'package:flutterotp_firebase/app/Screen/UpvasList/controller/upvasBinding.dart';
 import 'package:get/get.dart';
 
@@ -37,6 +39,12 @@ class AppPages {
       name: _Paths.Add_upvas,
       page: () => const AddUpvasView(),
       binding: AddUpvasBinding(),
+    ),
+
+    GetPage(
+      name: _Paths.LOCATION,
+      page: () =>   locationScreen(),
+      binding: LocationBinding(),
     ),
   ];
 }

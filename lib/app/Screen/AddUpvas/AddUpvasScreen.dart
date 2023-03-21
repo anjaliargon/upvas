@@ -3,9 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutterotp_firebase/app/Constant/Colors.dart';
 import 'package:flutterotp_firebase/app/Constant/app_constant.dart';
-import 'package:flutterotp_firebase/app/Constant/sizeConstant.dart';
 import 'package:flutterotp_firebase/app/Screen/AddUpvas/controller/AppUpvasController.dart';
-import 'package:flutterotp_firebase/app/Screen/Home/controller/Homecontroller.dart';
 import 'package:flutterotp_firebase/app/Screen/Home/controller/Selectedmodel.dart';
 import 'package:flutterotp_firebase/app/routes/app_pages.dart';
 
@@ -29,7 +27,7 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
               Get.back();
             },
             child: Image.asset(
-              "assets/icons_image/back.png",
+              "assets/icons_image/Back.png",
               height: 7.h,
               width: 7.w,
             )),
@@ -268,7 +266,7 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                           list.forEach((element) {
                             if (element.name ==
                                 controller.dropdownValue.value) {
-                              element.status.value = 0;
+                              element.status.value = 1;
                             }
                           });
 
@@ -287,7 +285,7 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                             if (element.name.toString() ==
                                 controller.dropdownValue.value) {
 
-                              element.status.value = 0;
+                              element.status.value = 1;
                             }
                           });
                           box.write(
@@ -309,13 +307,13 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                           list.forEach((element) {
                             if (element.name.toString() ==
                                 controller.dropdownValue.value) {
-                              element.status.value = 0;
+                              element.status.value = 1;
                             }
                           });
                           listSavar.forEach((element) {
                             if (element.name.toString() ==
                                 controller.dropdownValue.value) {
-                              element.status.value = 0;
+                              element.status.value = 1;
                             }
                           });
                           box.write(

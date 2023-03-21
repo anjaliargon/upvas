@@ -22,11 +22,12 @@ class Homescreen extends GetView<HomeController> {
         () => Scaffold(
           backgroundColor: colors.white,
           body:
-              // (homeController.hasData.isFalse)
-              //     ? const Center(
-              //         child: CircularProgressIndicator(),
-              //       )
-              //     :
+
+              // (homeController.hasData.value == 0)
+              //         ? const Center(
+              //             child: CircularProgressIndicator(),
+              //           )
+              //         :
               Column(
             children: [
               SizedBox(
@@ -172,7 +173,6 @@ class Homescreen extends GetView<HomeController> {
                             mainAxisSpacing: 5.0,
                           ),
                           itemBuilder: (BuildContext context, int index) {
-                            final item = controller.selectedList[index];
                             return InkWell(
                               onTap: () {
                                 controller.updateStatus(index);
@@ -186,16 +186,15 @@ class Homescreen extends GetView<HomeController> {
                               child: Obx(
                                 () => Container(
                                   decoration: BoxDecoration(
-                                    color:
-                                        controller.getColor(item.status.value)
-
-                                    // (homeController.selectedList[index].status.value ==  0)
-                                    //     ? colors.lightgrey
-                                    //     : (homeController.selectedList[index].
-                                    //     status.value ==  0)
-                                    //         ? colors.green
-                                    //         : colors.red,
-                                    ,
+                                    color: (homeController.selectedList[index]
+                                                .status.value ==
+                                            0)
+                                        ? colors.lightgrey
+                                        : (homeController.selectedList[index]
+                                                    .status.value ==
+                                                1)
+                                            ? colors.green
+                                            : colors.red,
                                     shape: BoxShape.circle,
                                   ),
                                   margin: const EdgeInsets.all(5),
@@ -237,11 +236,9 @@ class Homescreen extends GetView<HomeController> {
                             mainAxisSpacing: 5.0,
                           ),
                           itemBuilder: (BuildContext context, int index) {
-                            final item = controller.selectedList[index + 65];
                             return InkWell(
                               onTap: () {
-                                homeController.selectedList[index + 65].status
-                                        .value == 0;
+                                homeController.updateStatus(index + 65);
                                 box.write(
                                     homeController.selectedDate.value +
                                         homeController.dropdown.value,
@@ -249,26 +246,41 @@ class Homescreen extends GetView<HomeController> {
                                         .map((e) => e.toJson())
                                         .toList()));
                               },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: controller.getColor(item.status.value),
-                                  shape: BoxShape.circle,
-                                ),
-                                margin: const EdgeInsets.all(5),
-                                child: Center(
-                                  child: Text(
-                                    homeController.selectedList[index + 65].name
-                                        .toString(),
-                                    style: TextStyle(
-                                      color: (homeController
-                                                  .selectedList[index + 65]
-                                                  .status
-                                                  .value ==
-                                              0)
-                                          ? colors.darkgrey
-                                          : colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15.sp,
+                              child: Obx(
+                                () => Container(
+                                  decoration: BoxDecoration(
+                                    color: (homeController
+                                                .selectedList[index + 65]
+                                                .status
+                                                .value ==
+                                            0)
+                                        ? colors.lightgrey
+                                        : (homeController
+                                                    .selectedList[index + 65]
+                                                    .status
+                                                    .value ==
+                                                1)
+                                            ? colors.green
+                                            : colors.red,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  margin: const EdgeInsets.all(5),
+                                  child: Center(
+                                    child: Text(
+                                      homeController
+                                          .selectedList[index + 65].name
+                                          .toString(),
+                                      style: TextStyle(
+                                        color: (homeController
+                                                    .selectedList[index + 65]
+                                                    .status
+                                                    .value ==
+                                                0)
+                                            ? colors.darkgrey
+                                            : colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15.sp,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -296,13 +308,7 @@ class Homescreen extends GetView<HomeController> {
                             final item = controller.selectedList[index + 75];
                             return InkWell(
                               onTap: () {
-                                homeController.selectedList[index + 75].status
-                                        .value ==
-                                    0;
-                                // homeController.selectedList.listen((value) {
-                                //   homeController.selectedList[index] =
-                                //       value as Selected;
-                                // });
+                                controller.updateStatus(index + 75);
                                 box.write(
                                     homeController.selectedDate.value +
                                         homeController.dropdown.value,
@@ -312,7 +318,17 @@ class Homescreen extends GetView<HomeController> {
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: controller.getColor(item.status.value),
+                                  color: (homeController
+                                              .selectedList[index + 75]
+                                              .status
+                                              .value ==
+                                          0)
+                                      ? colors.lightgrey
+                                      : (homeController.selectedList[index + 75]
+                                                  .status.value ==
+                                              1)
+                                          ? colors.green
+                                          : colors.red,
                                   shape: BoxShape.circle,
                                 ),
                                 margin: const EdgeInsets.all(5),
@@ -354,16 +370,9 @@ class Homescreen extends GetView<HomeController> {
                             mainAxisSpacing: 5.0,
                           ),
                           itemBuilder: (BuildContext context, int index) {
-                            final item = controller.selectedList[index + 92];
                             return InkWell(
                               onTap: () {
-                                homeController.selectedList[index + 92].status
-                                        .value ==
-                                    0;
-                                // homeController.selectedList.listen((value) {
-                                //   homeController.selectedList[index] =
-                                //       value as Selected;
-                                // });
+                                controller.updateStatus(index + 92);
                                 box.write(
                                     homeController.selectedDate.value +
                                         homeController.dropdown.value,
@@ -373,7 +382,17 @@ class Homescreen extends GetView<HomeController> {
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: controller.getColor(item.status.value),
+                                  color: (homeController
+                                              .selectedList[index + 92]
+                                              .status
+                                              .value ==
+                                          0)
+                                      ? colors.lightgrey
+                                      : (homeController.selectedList[index + 92]
+                                                  .status.value ==
+                                              1)
+                                          ? colors.green
+                                          : colors.red,
                                   shape: BoxShape.circle,
                                 ),
                                 margin: const EdgeInsets.all(5),
@@ -384,11 +403,11 @@ class Homescreen extends GetView<HomeController> {
                                     style: TextStyle(
                                       color: (homeController
                                                   .selectedList[index + 92]
-                                                  .status ==
+                                                  .status
+                                                  .value ==
                                               0)
                                           ? colors.darkgrey
                                           : colors.white,
-                                      //  color: item[index] ? Colors.white : Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15.sp,
                                     ),
@@ -415,12 +434,9 @@ class Homescreen extends GetView<HomeController> {
                             mainAxisSpacing: 5.0,
                           ),
                           itemBuilder: (BuildContext context, int index) {
-                            final item = controller.selectedList[index + 97];
                             return InkWell(
                               onTap: () {
-                                homeController.selectedList[index + 97].status
-                                        .value ==
-                                    0;
+                                controller.updateStatus(index + 97);
                                 box.write(
                                     homeController.selectedDate.value +
                                         homeController.dropdown.value,
@@ -430,7 +446,17 @@ class Homescreen extends GetView<HomeController> {
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: controller.getColor(item.status.value),
+                                  color: (homeController
+                                              .selectedList[index + 97]
+                                              .status
+                                              .value ==
+                                          0)
+                                      ? colors.lightgrey
+                                      : (homeController.selectedList[index + 97]
+                                                  .status.value ==
+                                              1)
+                                          ? colors.green
+                                          : colors.red,
                                   shape: BoxShape.circle,
                                 ),
                                 margin: const EdgeInsets.all(5),
