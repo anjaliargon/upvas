@@ -21,14 +21,11 @@ class Homescreen extends GetView<HomeController> {
       builder: (controller) => Obx(
         () => Scaffold(
           backgroundColor: colors.white,
-          body:
-
-              // (homeController.hasData.value == 0)
-              //         ? const Center(
-              //             child: CircularProgressIndicator(),
-              //           )
-              //         :
-              Column(
+          body: (homeController.hasData.value == 0)
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Column(
             children: [
               SizedBox(
                 height: 2.h,
@@ -40,7 +37,7 @@ class Homescreen extends GetView<HomeController> {
                   children: [
                     Container(
                       height: 6.h,
-                      width: 40.w,
+                      width: 30.w,
                       decoration: BoxDecoration(
                           color: colors.white,
                           border: Border.all(width: 1, color: colors.grey),
@@ -71,7 +68,7 @@ class Homescreen extends GetView<HomeController> {
                     ),
                     Container(
                       height: 6.h,
-                      width: 40.w,
+                      width: 30.w,
                       decoration: BoxDecoration(
                           color: colors.white,
                           border: Border.all(width: 1, color: colors.grey),
@@ -96,11 +93,58 @@ class Homescreen extends GetView<HomeController> {
                               ),
                             ),
                             onChanged: (value) {
-                              homeController.dropdown(value);
+                              homeController.dropdownTime(value);
                               homeController.data();
                             },
-                            value: homeController.dropdown.value,
-                            items: homeController.dropdownList.map((selected) {
+                            value: homeController.dropdownTime.value,
+                            items: homeController.dropdownListTime.map((selected) {
+                              return DropdownMenuItem(
+                                value: selected,
+                                child: Text(
+                                  selected,
+                                  style: TextStyle(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: colors.black),
+                                ),
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 6.h,
+                      width: 30.w,
+                      decoration: BoxDecoration(
+                          color: colors.white,
+                          border: Border.all(width: 1, color: colors.grey),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Center(
+                          child: DropdownButton(
+                            isExpanded: true,
+                            elevation: 0,
+                            underline: Container(
+                              color: colors.white,
+                            ),
+                            icon: SizedBox(
+                              height: 5.h,
+                              width: 5.w,
+                              child: Image(
+                                image: const AssetImage(
+                                    'assets/icons_image/dropdown.png'),
+                                height: 1.h,
+                                width: 1.w,
+                              ),
+                            ),
+                            onChanged: (value) {
+                              homeController.dropdownlocation(value);
+                              homeController.data();
+                            },
+                            value: homeController.dropdownlocation.value,
+                            items: homeController.dropdownListLocation.map((selected) {
                               return DropdownMenuItem(
                                 value: selected,
                                 child: Text(
@@ -178,7 +222,7 @@ class Homescreen extends GetView<HomeController> {
                                 controller.updateStatus(index);
                                 box.write(
                                     homeController.selectedDate.value +
-                                        homeController.dropdown.value,
+                                        homeController.dropdownTime.value,
                                     jsonEncode(homeController.selectedList
                                         .map((e) => e.toJson())
                                         .toList()));
@@ -241,7 +285,7 @@ class Homescreen extends GetView<HomeController> {
                                 homeController.updateStatus(index + 65);
                                 box.write(
                                     homeController.selectedDate.value +
-                                        homeController.dropdown.value,
+                                        homeController.dropdownTime.value,
                                     jsonEncode(homeController.selectedList
                                         .map((e) => e.toJson())
                                         .toList()));
@@ -311,7 +355,7 @@ class Homescreen extends GetView<HomeController> {
                                 controller.updateStatus(index + 75);
                                 box.write(
                                     homeController.selectedDate.value +
-                                        homeController.dropdown.value,
+                                        homeController.dropdownTime.value,
                                     jsonEncode(homeController.selectedList
                                         .map((e) => e.toJson())
                                         .toList()));
@@ -375,7 +419,7 @@ class Homescreen extends GetView<HomeController> {
                                 controller.updateStatus(index + 92);
                                 box.write(
                                     homeController.selectedDate.value +
-                                        homeController.dropdown.value,
+                                        homeController.dropdownTime.value,
                                     jsonEncode(homeController.selectedList
                                         .map((e) => e.toJson())
                                         .toList()));
@@ -439,7 +483,7 @@ class Homescreen extends GetView<HomeController> {
                                 controller.updateStatus(index + 97);
                                 box.write(
                                     homeController.selectedDate.value +
-                                        homeController.dropdown.value,
+                                        homeController.dropdownTime.value,
                                     jsonEncode(homeController.selectedList
                                         .map((e) => e.toJson())
                                         .toList()));

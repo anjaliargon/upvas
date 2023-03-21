@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutterotp_firebase/app/Constant/Colors.dart';
 import 'package:flutterotp_firebase/app/Constant/app_constant.dart';
 
 import 'package:flutterotp_firebase/app/Constant/sizeConstant.dart';
@@ -121,12 +120,18 @@ class HomeController extends GetxController {
     Selected(status: 0.obs, name: "SE8", location: "Kundal"),
   ]);
   RxList<Selected> getDataList = RxList<Selected>([]);
-  RxList<String> dropdownList = <String>[
+  RxList<String> dropdownListTime = <String>[
     timeConstant.savar,
     timeConstant.Sanj,
   ].obs;
+  RxList<String> dropdownListLocation = <String>[
+    "Kundal",
+    "Vadodara",
+    "Gam",
+  ].obs;
   RxInt hasData = 0.obs;
-  RxString dropdown = timeConstant.savar.obs;
+  RxString dropdownTime = timeConstant.savar.obs;
+  RxString dropdownlocation = "Kundal".obs;
 
   @override
   void onInit() {
@@ -146,18 +151,20 @@ class HomeController extends GetxController {
   data() async {
     hasData.value = 0;
     getDataList.clear();
-    if (!isNullEmptyOrFalse(box.read(selectedDate.value + dropdown.value))) {
+    if (!isNullEmptyOrFalse(
+        box.read(selectedDate.value + dropdownTime.value))) {
+      getDataList.clear();
       getDataList.value =
-          ((jsonDecode(box.read(selectedDate.value + dropdown.value))
+          ((jsonDecode(box.read(selectedDate.value + dropdownTime.value))
                       as List<dynamic>)
                   .toList())
               .map((e) => Selected.fromJson(e))
               .toList();
     }
-    if (getDataList.length == 0) {
-      box.write(selectedDate.value + dropdown.value,
-          jsonEncode(selectedList.map((e) => e.toJson()).toList()));
+    if (getDataList.length <= 0) {
       selectedList.clear();
+      box.write(selectedDate.value + dropdownTime.value,
+          jsonEncode(selectedList.map((e) => e.toJson()).toList()));
       selectedList.addAll(RxList<Selected>([
         Selected(status: 0.obs, name: "1", location: "Kundal"),
         Selected(status: 0.obs, name: "2", location: "Kundal"),
@@ -302,10 +309,6 @@ class HomeController extends GetxController {
     } else {}
   }
 
-  // void setStatus(int index) {
-  //   Selected item = selectedList[index];
-  //   selectedList[] = newStatus; // change the status value
-  // }
   void updateStatus(int index) {
     Selected item = selectedList[index];
     int newStatus = (item.status.value + 1) % 3;
@@ -318,15 +321,4 @@ class HomeController extends GetxController {
     //         .map((e) => e.toJson())
     //         .toList()));
   }
-
-// getColor(int status) {
-//   switch (status) {
-//     case 1:
-//       return Colors.green;
-//     case 2:
-//       return Colors.red;
-//     default:
-//       return Colors.grey;
-//   }
-// }
 }
