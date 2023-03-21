@@ -30,7 +30,7 @@ class locationScreen extends GetWidget<LocationController> {
                 child: Text("Save"),
                 onPressed: () async {
                   print(selectedlocation.toString());
-                  // Get.offAllNamed(Routes.MAINHOME)
+                  Get.offAllNamed(Routes.MAINHOME);
                 }),
           ],
         ),
@@ -41,13 +41,13 @@ class locationScreen extends GetWidget<LocationController> {
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Text(controller.selectedList[index].name),
-                  subtitle: Obx(() => Text(selectedlocation[index].toString())),
+                  // subtitle: Obx(() => Text(selectedlocation[index].toString())),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Obx(() => Row(
                             children: [
-                              const Text("Kundal"),
+
                               Radio(
                                 value: "Kundal",
                                 groupValue: selectedlocation[index].toString(),
@@ -56,11 +56,15 @@ class locationScreen extends GetWidget<LocationController> {
                                   print(selectedlocation[index]);
                                 },
                               ),
+                               Text("Kundal",
+                                 style: TextStyle(
+                                color: (selectedlocation[index]=="Kundal")? Colors.blue: Colors.black
+                              ),),
                             ],
                           )),
                       Obx(() => Row(
                             children: [
-                              const Text("Vadodara"),
+
                               Radio(
                                 value: "Vadodara",
                                 groupValue: selectedlocation[index].toString(),
@@ -68,11 +72,15 @@ class locationScreen extends GetWidget<LocationController> {
                                   selectedlocation[index] = value!;
                                 },
                               ),
+                               Text("Vadodara",
+                                style: TextStyle(
+                                    color: (selectedlocation[index]=="Vadodara")? Colors.blue: Colors.black
+                                ),
+                              ),
                             ],
                           )),
                       Obx(() => Row(
                             children: [
-                              const Text("Gam"),
                               Radio(
                                 value: 'Gam',
                                 groupValue: selectedlocation[index].toString(),
@@ -80,6 +88,12 @@ class locationScreen extends GetWidget<LocationController> {
                                   selectedlocation[index] = value!;
                                 },
                               ),
+                               Text("Gam",
+                                 style: TextStyle(
+                                     color: (selectedlocation[index]=="Gam")? Colors.blue: Colors.black
+                                 ),
+                               ),
+
                             ],
                           )),
                     ],
