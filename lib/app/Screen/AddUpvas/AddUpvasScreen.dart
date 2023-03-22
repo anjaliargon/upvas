@@ -255,8 +255,7 @@ class AddUpvasView extends GetWidget<AddUpvasController> {
                     SizedBox(height: 10.h),
                     InkWell(
                       onTap: () async {
-                        if (controller.getSelectedText() ==
-                            timeConstant.savar) {
+                        if (controller.getSelectedText() == timeConstant.savar) {
                           List<Selected> list = await ((jsonDecode(box.read(
                                       controller.DataDate.value +
                                           timeConstant.savar)) as List<dynamic>)

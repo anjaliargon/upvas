@@ -21,6 +21,13 @@ class Dashboard extends GetWidget<DashboardController> {
             length: 2,
             child: Scaffold(
               appBar: AppBar(
+                actions: [
+                  IconButton(
+                      onPressed: (){
+                        
+                      },
+                      icon: Icon(Icons.settings,color: colors.darkbrown,))
+                ],
                 backgroundColor: Colors.white,
                 centerTitle: true,
                 title: Text(

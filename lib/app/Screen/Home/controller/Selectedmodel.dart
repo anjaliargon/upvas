@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
 
 class Selected extends Rxn {
+  final String location;
   final String name;
   final RxInt status;
-  final String location;
+
 
   Selected({required this.location,required this.name, required this.status});
 

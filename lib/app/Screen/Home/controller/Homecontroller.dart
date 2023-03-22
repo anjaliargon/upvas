@@ -120,6 +120,7 @@ class HomeController extends GetxController {
     Selected(status: 0.obs, name: "SE8", location: "Kundal"),
   ]);
   RxList<Selected> getDataList = RxList<Selected>([]);
+  RxList getLocation = RxList([]);
   RxList<String> dropdownListTime = <String>[
     timeConstant.savar,
     timeConstant.Sanj,
@@ -140,6 +141,10 @@ class HomeController extends GetxController {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       data();
     });
+    if (!isNullEmptyOrFalse(Get.arguments)) {
+      getLocation.value = Get.arguments["Location"];
+      print(getLocation.value);
+    }
     super.onInit();
   }
 
@@ -313,12 +318,14 @@ class HomeController extends GetxController {
     Selected item = selectedList[index];
     int newStatus = (item.status.value + 1) % 3;
     item.status.value = newStatus;
-    // Color color = getColor(newStatus);
     item.refresh();
-    // box.write(
-    //     selectedDate.value + dropdown.value,
-    //     jsonEncode(item
-    //         .map((e) => e.toJson())
-    //         .toList()));
+  }
+
+  void location() {
+    getLocation.value =
+        ((jsonDecode(box.read(dropdownlocation.value)) as List<dynamic>)
+                .toList())
+            .map((e) => Selected.fromJson(e))
+            .toList();
   }
 }

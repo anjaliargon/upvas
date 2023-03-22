@@ -11,6 +11,7 @@ import '../../../main.dart';
 
 class Homescreen extends GetView<HomeController> {
   Homescreen({Key? key}) : super(key: key);
+
   final homeController = Get.put(HomeController());
 
   @override
@@ -140,8 +141,8 @@ class Homescreen extends GetView<HomeController> {
                               ),
                             ),
                             onChanged: (value) {
-                              homeController.dropdownlocation(value);
-                              homeController.data();
+                              controller.dropdownlocation.value = value!;
+                              homeController.location();
                             },
                             value: homeController.dropdownlocation.value,
                             items: homeController.dropdownListLocation.map((selected) {
@@ -254,7 +255,7 @@ class Homescreen extends GetView<HomeController> {
                                             ? colors.darkgrey
                                             : colors.white,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 20.sp,
+                                        fontSize: 18.sp,
                                       ),
                                     ),
                                   ),

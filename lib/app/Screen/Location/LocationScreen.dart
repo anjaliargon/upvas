@@ -1,12 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutterotp_firebase/app/Screen/Home/controller/Selectedmodel.dart';
 import 'package:flutterotp_firebase/app/Screen/Location/Controller/LocationController.dart';
 import 'package:flutterotp_firebase/app/routes/app_pages.dart';
-import 'package:flutterotp_firebase/main.dart';
 import 'package:get/get.dart';
-import 'package:sizer/sizer.dart';
 import '../../Constant/Colors.dart';
 import '../../Constant/app_constant.dart';
 
@@ -16,7 +13,7 @@ class locationScreen extends GetWidget<LocationController> {
   @override
   Widget build(BuildContext context) {
     final RxList<String> selectedlocation = RxList<String>(
-        List.generate(controller.selectedList.length, (index) => 'Kundal'));
+        List.generate(controller.selectedList.length, (index) => controller.location[0]));
     MyColor colors = MyColor();
     return Scaffold(
         appBar: AppBar(
@@ -30,7 +27,8 @@ class locationScreen extends GetWidget<LocationController> {
                 child: Text("Save"),
                 onPressed: () async {
                   print(selectedlocation.toString());
-                  Get.offAllNamed(Routes.MAINHOME);
+                  Get.offAllNamed(Routes.MAINHOME,
+                      arguments: {"Location": selectedlocation});
                 }),
           ],
         ),
@@ -41,59 +39,62 @@ class locationScreen extends GetWidget<LocationController> {
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Text(controller.selectedList[index].name),
-                  // subtitle: Obx(() => Text(selectedlocation[index].toString())),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Obx(() => Row(
                             children: [
-
                               Radio(
-                                value: "Kundal",
-                                groupValue: selectedlocation[index].toString(),
-                                onChanged: (value) {
-                                  selectedlocation[index] = value!;
-                                  print(selectedlocation[index]);
-                                },
-                              ),
-                               Text("Kundal",
-                                 style: TextStyle(
-                                color: (selectedlocation[index]=="Kundal")? Colors.blue: Colors.black
-                              ),),
-                            ],
-                          )),
-                      Obx(() => Row(
-                            children: [
-
-                              Radio(
-                                value: "Vadodara",
+                                value: controller.location[0],
                                 groupValue: selectedlocation[index].toString(),
                                 onChanged: (value) {
                                   selectedlocation[index] = value!;
                                 },
                               ),
-                               Text("Vadodara",
+                              Text(
+                                "Kundal",
                                 style: TextStyle(
-                                    color: (selectedlocation[index]=="Vadodara")? Colors.blue: Colors.black
-                                ),
+                                    color: (selectedlocation[index] == controller.location[0])
+                                        ? Colors.blue
+                                        : Colors.black),
                               ),
                             ],
                           )),
                       Obx(() => Row(
                             children: [
                               Radio(
-                                value: 'Gam',
+                                value: controller.location[1],
                                 groupValue: selectedlocation[index].toString(),
                                 onChanged: (value) {
                                   selectedlocation[index] = value!;
                                 },
                               ),
-                               Text("Gam",
-                                 style: TextStyle(
-                                     color: (selectedlocation[index]=="Gam")? Colors.blue: Colors.black
-                                 ),
-                               ),
-
+                              Text(
+                                "Vadodara",
+                                style: TextStyle(
+                                    color:
+                                        (selectedlocation[index] == controller.location[1])
+                                            ? Colors.blue
+                                            : Colors.black),
+                              ),
+                            ],
+                          )),
+                      Obx(() => Row(
+                            children: [
+                              Radio(
+                                value: controller.location[2],
+                                groupValue: selectedlocation[index].toString(),
+                                onChanged: (value) {
+                                  selectedlocation[index] = value!;
+                                },
+                              ),
+                              Text(
+                                "Gam",
+                                style: TextStyle(
+                                    color: (selectedlocation[index] == controller.location[2])
+                                        ? Colors.blue
+                                        : Colors.black),
+                              ),
                             ],
                           )),
                     ],

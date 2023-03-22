@@ -108,8 +108,7 @@ class UpavaslistView extends GetWidget<UpavaslistController> {
                                           ),
                                           onChanged: (String? value) {
                                             // This is called when the user selects an item.
-                                            controller.dropdownValue.value =
-                                                value!;
+                                            controller.dropdownValue.value = value!;
                                             controller.data();
                                           },
                                           items: controller.dropdown
