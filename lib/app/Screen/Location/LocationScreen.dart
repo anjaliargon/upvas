@@ -12,8 +12,7 @@ class locationScreen extends GetWidget<LocationController> {
 
   @override
   Widget build(BuildContext context) {
-    final RxList<String> selectedlocation = RxList<String>(
-        List.generate(controller.selectedList.length, (index) => controller.location[0]));
+
     MyColor colors = MyColor();
     return Scaffold(
         appBar: AppBar(
@@ -26,9 +25,9 @@ class locationScreen extends GetWidget<LocationController> {
             TextButton(
                 child: Text("Save"),
                 onPressed: () async {
-                  print(selectedlocation.toString());
+                  controller.data();
                   Get.offAllNamed(Routes.MAINHOME,
-                      arguments: {"Location": selectedlocation});
+                      arguments: {"Location": controller.location});
                 }),
           ],
         ),
@@ -45,16 +44,16 @@ class locationScreen extends GetWidget<LocationController> {
                       Obx(() => Row(
                             children: [
                               Radio(
-                                value: controller.location[0],
-                                groupValue: selectedlocation[index].toString(),
+                                value: controller.locationlist[0],
+                                groupValue: controller.location[index].toString(),
                                 onChanged: (value) {
-                                  selectedlocation[index] = value!;
+                                  controller.location[index] = value!;
                                 },
                               ),
                               Text(
                                 "Kundal",
                                 style: TextStyle(
-                                    color: (selectedlocation[index] == controller.location[0])
+                                    color: (controller.location[index] == controller.locationlist[0])
                                         ? Colors.blue
                                         : Colors.black),
                               ),
@@ -63,17 +62,17 @@ class locationScreen extends GetWidget<LocationController> {
                       Obx(() => Row(
                             children: [
                               Radio(
-                                value: controller.location[1],
-                                groupValue: selectedlocation[index].toString(),
+                                value: controller.locationlist[1],
+                                groupValue: controller.location[index].toString(),
                                 onChanged: (value) {
-                                  selectedlocation[index] = value!;
+                                  controller.location[index] = value!;
                                 },
                               ),
                               Text(
                                 "Vadodara",
                                 style: TextStyle(
                                     color:
-                                        (selectedlocation[index] == controller.location[1])
+                                        (controller.location[index] == controller.locationlist[1])
                                             ? Colors.blue
                                             : Colors.black),
                               ),
@@ -82,16 +81,17 @@ class locationScreen extends GetWidget<LocationController> {
                       Obx(() => Row(
                             children: [
                               Radio(
-                                value: controller.location[2],
-                                groupValue: selectedlocation[index].toString(),
+                                value: controller.locationlist[2],
+                                groupValue: controller.location[index].toString(),
                                 onChanged: (value) {
-                                  selectedlocation[index] = value!;
+                                  controller.location[index] = value!;
+                                  // controller.locationvalue.value =  selectedlocation[index];
                                 },
                               ),
                               Text(
                                 "Gam",
                                 style: TextStyle(
-                                    color: (selectedlocation[index] == controller.location[2])
+                                    color: (controller.location[index] == controller.locationlist[2])
                                         ? Colors.blue
                                         : Colors.black),
                               ),

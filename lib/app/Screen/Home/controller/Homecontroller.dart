@@ -14,10 +14,10 @@ class HomeController extends GetxController {
   RxString selectedDate = "".obs;
   RxList<Selected> selectedList = RxList<Selected>([
     Selected(status: 0.obs, name: "1", location: "Kundal"),
-    Selected(status: 0.obs, name: "2", location: "Kundal"),
-    Selected(status: 0.obs, name: "3", location: "Kundal"),
-    Selected(status: 0.obs, name: "4", location: "Kundal"),
-    Selected(status: 0.obs, name: "5", location: "Kundal"),
+    Selected(status: 0.obs, name: "2", location: "Vadodara"),
+    Selected(status: 0.obs, name: "3", location: "Gam"),
+    Selected(status: 0.obs, name: "4", location: "Vadodara"),
+    Selected(status: 0.obs, name: "5", location: "Vadodara"),
     Selected(status: 0.obs, name: "6", location: "Kundal"),
     Selected(status: 0.obs, name: "7", location: "Kundal"),
     Selected(status: 0.obs, name: "8", location: "Kundal"),
@@ -157,10 +157,10 @@ class HomeController extends GetxController {
     hasData.value = 0;
     getDataList.clear();
     if (!isNullEmptyOrFalse(
-        box.read(selectedDate.value + dropdownTime.value))) {
+        box.read(selectedDate.value + dropdownTime.value+dropdownlocation.value))) {
       getDataList.clear();
       getDataList.value =
-          ((jsonDecode(box.read(selectedDate.value + dropdownTime.value))
+          ((jsonDecode(box.read(selectedDate.value + dropdownTime.value+dropdownlocation.value))
                       as List<dynamic>)
                   .toList())
               .map((e) => Selected.fromJson(e))
@@ -168,10 +168,10 @@ class HomeController extends GetxController {
     }
     if (getDataList.length <= 0) {
       selectedList.clear();
-      box.write(selectedDate.value + dropdownTime.value,
+      box.write(selectedDate.value + dropdownTime.value+dropdownlocation.value,
           jsonEncode(selectedList.map((e) => e.toJson()).toList()));
       selectedList.addAll(RxList<Selected>([
-        Selected(status: 0.obs, name: "1", location: "Kundal"),
+        Selected(status: 0.obs, name: "1", location: "Vadodara"),
         Selected(status: 0.obs, name: "2", location: "Kundal"),
         Selected(status: 0.obs, name: "3", location: "Kundal"),
         Selected(status: 0.obs, name: "4", location: "Kundal"),

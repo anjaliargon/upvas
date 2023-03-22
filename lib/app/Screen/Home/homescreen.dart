@@ -141,8 +141,8 @@ class Homescreen extends GetView<HomeController> {
                               ),
                             ),
                             onChanged: (value) {
-                              controller.dropdownlocation.value = value!;
-                              homeController.location();
+                              homeController.dropdownlocation(value);
+                              homeController.data();
                             },
                             value: homeController.dropdownlocation.value,
                             items: homeController.dropdownListLocation.map((selected) {
